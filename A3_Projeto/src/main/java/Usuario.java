@@ -16,8 +16,6 @@ public class Usuario {
         this.nome = nome;
         this.senha = senha;
     }
-
-    
     
     public String getNome() { //get do nome
         return nome;
@@ -26,8 +24,6 @@ public class Usuario {
     public String getSenha() { //get do senha
         return senha;
     }
-
-    
     
     public void setNome(String nome) { //set do nome
         this.nome = nome;
@@ -36,9 +32,5 @@ public class Usuario {
     public void setSenha(String senha) {//set do senha
         this.senha = senha;
     }
-    
-    
-    
-    
     
 }

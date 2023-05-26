@@ -16,15 +16,17 @@ import javax.swing.JOptionPane;
  */
 public class DAO { //Data acess to Object (fazer a ponte com o MySQL)
     
-    public boolean existeUsuario(Usuario usuario) throws Exception{
+    public boolean existeUsuario(Usuario objUsuario) throws Exception{
         
         String sql = "select * from tb_usuario where nome = ? and senha = ?";
         
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){ //Ida
-            ps.setString(1, usuario.getNome());
-            ps.setString(2, usuario.getSenha());
+            
+            ps.setString(1, objUsuario.getNome());
+            ps.setString(2, objUsuario.getSenha());
             
             try (ResultSet rs = ps.executeQuery()){
+               
                 return rs.next();
                 
             }
@@ -33,18 +35,23 @@ public class DAO { //Data acess to Object (fazer a ponte com o MySQL)
         
     }
     
-     public boolean cadastrarUsuario(Usuario objUsuario) throws Exception{
+    public void cadastrarUsuario(Usuario objUsuario) throws Exception{
 
-        String sql = "insert into usuario (nomeUsuario, senhaUsuario) values (?, ?)";
+        String sql = "insert into tb_usuario (nome, senha) values (?, ?)";
          
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
             ps.setString(1, objUsuario.getNome());
             ps.setString(2, objUsuario.getSenha());
             
-            try (ResultSet rs = ps.executeQuery()){
-                return rs.next();
+            try {
                 
+                int rs = ps.executeUpdate();
+                
+            } catch (Exception e){
+                
+                e.printStackTrace();
+            
             }
             
         } 

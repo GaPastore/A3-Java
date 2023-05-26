@@ -211,20 +211,21 @@ public class Cadastro extends javax.swing.JFrame {
         nome = txtNome.getText();
         senha = txtSenha.getText();
         
-        Usuario objUsuario = new Usuario(nome, senha);
-        
-        objUsuario.setNome(nome);
-        objUsuario.setSenha(senha);
-        
-        try{
-        DAO dao = new DAO();
-        dao.cadastrarUsuario(objUsuario);
-        Login objLogin = new Login();
-        objLogin.setVisible(true);
-        dispose();
+        try {
+            
+            Usuario objUsuario = new Usuario(nome, senha);
+            DAO dao = new DAO();
+            
+            dao.cadastrarUsuario(objUsuario);
+            Login objLogin = new Login();
+            objLogin.setVisible(true);
+            dispose();
+                    
         } catch (Exception e){
+        
             JOptionPane.showMessageDialog(null, "Problemas técnicos!");
             e.printStackTrace();
+        
         }
         
     }//GEN-LAST:event_btCadastrarActionPerformed

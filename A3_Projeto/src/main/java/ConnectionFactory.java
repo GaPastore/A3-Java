@@ -11,7 +11,8 @@ public class ConnectionFactory {
     private static String senha = "123456";
     
     public static Connection obtemConexao () throws Exception {
-        String url = String.format("\"jdbc:mysql://%s:%s/%s?useTimezone=true&serverTimezone=UTC\"", host, porta, db);
+        
+        String url = String.format("jdbc:mysql://%s:%s/%s?useTimezone=true&serverTimezone=UTC", host, porta, db);
         
         return DriverManager.getConnection(url, usuario, senha);
         
