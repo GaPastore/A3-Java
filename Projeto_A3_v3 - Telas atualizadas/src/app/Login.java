@@ -228,6 +228,7 @@ public class Login extends javax.swing.JFrame {
             DAO dao = new DAO();
 
             if (dao.existeUsuario(usuario)){
+                dao.nomeUsuario(usuario);
                 MenuPrincipal menu = new MenuPrincipal();
                 menu.setVisible(true);
                 dispose();

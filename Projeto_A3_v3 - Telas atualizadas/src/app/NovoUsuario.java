@@ -106,7 +106,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtNome.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtNome.setForeground(new java.awt.Color(153, 153, 153));
-        txtNome.setText("Novo Usuário");
         txtNome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNomeMouseClicked(evt);
@@ -147,7 +146,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(153, 153, 153));
-        txtEmail.setText("Novo Email");
         txtEmail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtEmailMouseClicked(evt);
@@ -164,7 +162,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtSenha.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtSenha.setForeground(new java.awt.Color(153, 153, 153));
-        txtSenha.setText("Nova Senha");
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -176,7 +173,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtEndereco.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtEndereco.setForeground(new java.awt.Color(153, 153, 153));
-        txtEndereco.setText("Endereço Completo");
         txtEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnderecoActionPerformed(evt);
@@ -188,7 +184,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtBairro.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtBairro.setForeground(new java.awt.Color(153, 153, 153));
-        txtBairro.setText("Seu Bairro");
         txtBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBairroActionPerformed(evt);
@@ -200,7 +195,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtCep.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtCep.setForeground(new java.awt.Color(153, 153, 153));
-        txtCep.setText("CEP");
         txtCep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCepActionPerformed(evt);
@@ -212,7 +206,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtCidade.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtCidade.setForeground(new java.awt.Color(153, 153, 153));
-        txtCidade.setText("Sua Cidade");
         txtCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCidadeActionPerformed(evt);
@@ -221,7 +214,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtTelRes.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtTelRes.setForeground(new java.awt.Color(153, 153, 153));
-        txtTelRes.setText("Seu Telefone");
         txtTelRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelResActionPerformed(evt);
@@ -236,7 +228,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtTelCom.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtTelCom.setForeground(new java.awt.Color(153, 153, 153));
-        txtTelCom.setText("Telefone Comercial");
         txtTelCom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelComActionPerformed(evt);
@@ -248,7 +239,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtCelRes.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtCelRes.setForeground(new java.awt.Color(153, 153, 153));
-        txtCelRes.setText("Seu Celular");
         txtCelRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCelResActionPerformed(evt);
@@ -260,7 +250,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtCelCom.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtCelCom.setForeground(new java.awt.Color(153, 153, 153));
-        txtCelCom.setText("Celular Comercial");
         txtCelCom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCelComActionPerformed(evt);
@@ -272,7 +261,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtComple.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtComple.setForeground(new java.awt.Color(153, 153, 153));
-        txtComple.setText("Complemento Res.");
         txtComple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCompleActionPerformed(evt);
@@ -284,7 +272,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtEstado.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtEstado.setForeground(new java.awt.Color(153, 153, 153));
-        txtEstado.setText("Seu Estado");
         txtEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEstadoActionPerformed(evt);
@@ -483,23 +470,33 @@ public class NovoUsuario extends javax.swing.JFrame {
         comple = txtComple.getText();
         tipoUsuario = 1;
         
-        try{
+        if(nome != null && email != null && senha != null && endereco != null && bairro != null && cidade != null
+                 && cep != null && telResi != null && telCome != null && celCome != null && comple != null){
             
-            Usuario usuario = new Usuario(nome, email, senha, endereco, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario);
-            DAO dao = new DAO();
+            try{
+            
+                Usuario usuario = new Usuario(nome, email, senha, endereco, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario);
+                DAO dao = new DAO();
 
-            dao.cadastrarUsuario(usuario);
-            Login login = new Login();
-            login.setVisible(true);
-            dispose();
+                dao.cadastrarUsuario(usuario);
+                Login login = new Login();
+                login.setVisible(true);
+                dispose();
             
+            }
+            catch (Exception e){
+            
+                JOptionPane.showMessageDialog(null, "Problemas técnicos!");
+                e.printStackTrace();
+            
+            }
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        
         }
-        catch (Exception e){
-            
-            JOptionPane.showMessageDialog(null, "Problemas técnicos!");
-            e.printStackTrace();
-            
-        }
+        
     }//GEN-LAST:event_btEnviarNovoUsuActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed

@@ -4,7 +4,9 @@ use db_sistema_cadastro;
 drop table tb_usuario;
 
 create table tb_usuario (
-    id int primary key auto_increment,
+    id int auto_increment, 
+    constraint pk_usuario
+    primary key (id),
     nome varchar(50),
     email varchar(50),
     senha varchar(20),
@@ -21,8 +23,13 @@ create table tb_usuario (
     tipo_usuario int(1)
     );
 
+drop table tb_empresa;
+
 create table tb_empresa (
-    id int primary key auto_increment,
+    id int auto_increment, 
+    constraint pk_empresa
+    primary key (id),
+    id_cli int,
     bairro_emp varchar(30),
     cidade_emp varchar(20),
     estado_emp varchar(2),
@@ -35,6 +42,14 @@ create table tb_empresa (
     arq_emp varchar(50)
 );
 
+alter table tb_empresa 
+add constraint fk_empresausuario 
+foreign key (id_cli) references tb_usuario(id);
+
 insert into tb_usuario (nome, senha) values ('admin', 'admin');
 
 select * from tb_usuario;
+select * from tb_empresa;
+
+select nome from tb_usuario;
+

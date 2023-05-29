@@ -5,9 +5,13 @@
 package DAO;
 
 import Usuario.Usuario;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -71,23 +75,47 @@ public class DAO {
         
     }
     
-    public boolean consultaUsuario(Usuario objUsuario) throws Exception{
+    public void consultaUsuario(Usuario objUsuario, JTable table) throws Exception{
         
-        String sql = "select * from tb_usuario where nome = ? or cep = ?";
+        String sql = "select * from tb_usuario";
         
-        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){ //Ida
+        try (Connection conn = ConnectionFactory.obtemConexao()){ //Ida
             
-            ps.setString(1, objUsuario.getNome());
-            ps.setString(2, objUsuario.getCep());
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
             
-            try (ResultSet rs = ps.executeQuery()){
-               
-                return rs.next();
-                
+            DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+            
+            int i = 0;
+            
+            while(rs.next()){
+               dtm.setRowCount(i+1);
+               table.setValueAt(rs.getString("id"), i, 0);
+               table.setValueAt(rs.getString("nome"), i, 1);
+               table.setValueAt(rs.getString("email"), i, 3);
+               table.setValueAt(rs.getString("cep"), i, 4);
+               i++;
             }
             
         }
         
     }
     
+    public void nomeUsuario(Usuario objUsuario) throws Exception{
+        
+        String sql = "select nome from tb_usuario";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao()){ //Ida
+            
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                JOptionPane.showMessageDialog(null, "Bem vindo, " + rs.getString("nome"));
+            }
+            
+        }
+        
+    }
+
 }
