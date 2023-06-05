@@ -5,7 +5,6 @@
 package app;
 
 import DAO.DAO;
-import Usuario.Empresa;
 import Usuario.Usuario;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -928,19 +927,22 @@ public class NovoCadastro extends javax.swing.JFrame {
         celComEmp = txtCelEmp.getText();
         arqEmp = txtArqEmp.getText();
         
-        if(data != null && nome != null && email != null && endereco != null && bairro != null && cidade != null
-                 && cep != null && telResi != null && telCome != null && celCome != null && comple != null
-                && nomeEmp != null && emailEmp != null && estadoEmp != null && enderecoEmp != null && bairroEmp != null
-                && cidadeEmp != null && cnpjEmp != null && cepEmp != null && compleEmp != null && telComEmp != null && celComEmp != null){
+        if(nome.matches("") || email.matches("") || endereco.matches("") || bairro.matches("") || cidade.matches("")
+                || estado.matches("") || cep.matches("") || telResi.matches("") || telCome.matches("") || celResi.matches("") || celCome.matches("")
+                || comple.matches("") || nomeEmp.matches("") || emailEmp.matches("") || estadoEmp.matches("") || enderecoEmp.matches("")
+                || bairroEmp.matches("") || cidadeEmp.matches("") || cnpjEmp.matches("") || cepEmp.matches("") || compleEmp.matches("")
+                || telComEmp.matches("") || celComEmp.matches("") || arqEmp.matches("")){
+            
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        
+        } else {
             
             try{
             
-                Usuario usuario = new Usuario(data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario);
-                Empresa empresa = new Empresa(nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp);
-                DAO dao = new DAO();
+                Usuario usuario = new Usuario(data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario,
+                nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp);DAO dao = new DAO();
 
                 dao.cadastrarUsuario(usuario);
-                dao.cadastrarEmpresa(empresa);
                 JOptionPane.showMessageDialog(null, "Cliente cadastrado!");
             
             }
@@ -949,11 +951,7 @@ public class NovoCadastro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Problemas técnicos!");
                 e.printStackTrace();
             
-            }
-            
-        } else {
-            
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }   
         
         }
         

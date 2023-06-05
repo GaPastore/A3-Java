@@ -5,9 +5,9 @@
 package app;
 
 import DAO.DAO;
-import Usuario.Empresa;
 import Usuario.Usuario;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -48,7 +48,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         txtNomeEmp = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
         t5 = new javax.swing.JLabel();
-        txtcnpj_emp = new javax.swing.JTextField();
+        txtCnpjEmp = new javax.swing.JTextField();
         t6 = new javax.swing.JLabel();
         text1 = new javax.swing.JLabel();
         txtData = new javax.swing.JTextField();
@@ -148,9 +148,9 @@ public class HistoricoCadastro extends javax.swing.JFrame {
 
         t5.setText("CPF:");
 
-        txtcnpj_emp.addActionListener(new java.awt.event.ActionListener() {
+        txtCnpjEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcnpj_empActionPerformed(evt);
+                txtCnpjEmpActionPerformed(evt);
             }
         });
 
@@ -205,7 +205,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(t6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtcnpj_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCnpjEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(t5)
                                 .addGap(18, 18, 18)
@@ -228,7 +228,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcnpj_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCnpjEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(t2)
                     .addComponent(t6)
@@ -275,6 +275,11 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         bteditar.setBackground(new java.awt.Color(204, 255, 255));
         bteditar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         bteditar.setText("EDITAR");
+        bteditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bteditarActionPerformed(evt);
+            }
+        });
 
         btsalvar.setBackground(new java.awt.Color(204, 255, 204));
         btsalvar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -291,13 +296,21 @@ public class HistoricoCadastro extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         tbHistorico.setColumnSelectionAllowed(true);
         jScrollPane3.setViewportView(tbHistorico);
+        tbHistorico.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jScrollPane1.setViewportView(jScrollPane3);
 
@@ -387,9 +400,9 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
 
-    private void txtcnpj_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcnpj_empActionPerformed
+    private void txtCnpjEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjEmpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtcnpj_empActionPerformed
+    }//GEN-LAST:event_txtCnpjEmpActionPerformed
 
     private void btmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmenuActionPerformed
         // TODO add your handling code here:
@@ -405,34 +418,36 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         String cpf = txtCpf.getText();
         String data = txtData.getText();
         String nomeEmp = txtNomeEmp.getText();
+        String cnpjEmp = txtCnpjEmp.getText();
         
-        Usuario usuario = new Usuario(data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, 2);
-        Empresa empresa = new Empresa(nomeEmp, null, null, null, null, null, null, null, null, null, null, null);
+        Usuario usuario = new Usuario(data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, 2,
+        nomeEmp, null, cnpjEmp, null, null, null, null, null, null, null, null, null);
         DAO dao = new DAO();
         
         String txtSqlUser = "select * from tb_usuario where tipo_usuario = 2";
-        String txtSqlEmp = "select * from tb_empresa";
         
-        if(data != ""){
+        if(!data.matches("")){
             txtSqlUser = txtSqlUser + " and new_data = '" + data + "'";
         }
-        if(nome != ""){
+        if(!nome.matches("")){
             txtSqlUser = txtSqlUser + " and nome = '" + nome + "'";
         }
-        if(email != ""){
+        if(!email.matches("")){
             txtSqlUser = txtSqlUser + " and email = '" + email + "'";
         }
-        if(cpf != ""){
+        if(!cpf.matches("")){
             txtSqlUser = txtSqlUser + " and cpf = '" + cpf + "'";
         }
-        if(nomeEmp != ""){
-            txtSqlEmp = txtSqlEmp + " where nome_emp = '" + nomeEmp + "'";
+        if(!nomeEmp.matches("")){
+            txtSqlUser = txtSqlUser + " and nome_emp = '" + nomeEmp + "'";
+        }
+        if(!cnpjEmp.matches("")){
+            txtSqlUser = txtSqlUser + " and cnpj_emp = '" + cnpjEmp + "'";
         }
         
         try {
         
             dao.consultaUsuario(usuario, tbHistorico, txtSqlUser);
-            dao.consultaEmpresa(empresa, tbHistorico, txtSqlEmp);
         
         } catch (Exception e){
             
@@ -441,6 +456,13 @@ public class HistoricoCadastro extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btFiltrarActionPerformed
+
+    private void bteditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteditarActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel) tbHistorico.getModel();
+        dtm.isCellEditable(tbHistorico.getRowCount(), tbHistorico.getColumnCount());
+        
+    }//GEN-LAST:event_bteditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,12 +524,12 @@ public class HistoricoCadastro extends javax.swing.JFrame {
     private javax.swing.JTable tbHistorico;
     private javax.swing.JLabel text;
     private javax.swing.JLabel text1;
+    private javax.swing.JTextField txtCnpjEmp;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtData;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeEmp;
-    private javax.swing.JTextField txtcnpj_emp;
     // End of variables declaration//GEN-END:variables
 }

@@ -467,8 +467,9 @@ public class NovoUsuario extends javax.swing.JFrame {
         comple = txtComple.getText();
         tipoUsuario = 1;
         
-        if(nome == " " || email == " " || senha == " " || endereco == " " || bairro == " " || cidade == " "
-                 || cep == "" || telResi == "" || telCome == "" || celCome == "" || comple == ""){
+        if(nome.matches("") || email.matches("") || senha.matches("") || endereco.matches("") || bairro.matches("") || cidade.matches("")
+                || estado.matches("") || cep.matches("") || telResi.matches("") || telCome.matches("") || celResi.matches("") || celCome.matches("")
+                || comple.matches("")){
             
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             
@@ -476,7 +477,8 @@ public class NovoUsuario extends javax.swing.JFrame {
             
             try{
             
-                Usuario usuario = new Usuario(null, nome, email, senha, endereco, null, null, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario);
+                Usuario usuario = new Usuario(null, nome, email, senha, endereco, null, null, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, null
+                , null, null, null, null, null, null, null, null, null, null, null);
                 DAO dao = new DAO();
 
                 dao.cadastrarUsuario(usuario);
