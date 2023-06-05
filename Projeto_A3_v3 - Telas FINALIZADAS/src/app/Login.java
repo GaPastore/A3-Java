@@ -221,7 +221,7 @@ public class Login extends javax.swing.JFrame {
         
         try{
             
-            Usuario usuario = new Usuario(null, null, email, senha, null, null, null, null, null, null, null, null, null, null, null, null, 1
+            Usuario usuario = new Usuario(0, null, null, email, senha, null, null, null, null, null, null, null, null, null, null, null, null, 1
             , null, null, null, null, null, null, null, null, null, null, null, null);
             DAO dao = new DAO();
 

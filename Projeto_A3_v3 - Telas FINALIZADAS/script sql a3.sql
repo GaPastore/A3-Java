@@ -41,10 +41,9 @@ create table tb_empresa (
     comp_emp varchar(15),
     arq_emp varchar(50)
 );
+#insert into tb_empresa (bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
-insert into tb_empresa (bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-
-select * from tb_usuario where tipo_usuario = 2 and new_data = "11/11/1111" and nome = 'b';
+#select * from tb_usuario where tipo_usuario = 2 and new_data = "11/11/1111" and nome = 'b';
 
 select * from tb_empresa;
 select * from tb_usuario;

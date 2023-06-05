@@ -10,7 +10,8 @@ package Usuario;
  */
 public class Usuario {
     
-    private String data;
+    private int id;
+    private String newData;
     private String nome;
     private String email;
     private String senha;
@@ -27,7 +28,6 @@ public class Usuario {
     private String celCome;
     private String comple;
     private int tipoUsuario;
-    
     private String nomeEmp;
     private String emailEmp;
     private String cnpjEmp;
@@ -41,11 +41,12 @@ public class Usuario {
     private String compleEmp;
     private String arqEmp;
 
-    public Usuario(String data, String nome, String email, String senha, String endereco, String cpf, String cnpj, String bairro, String cidade, 
+    public Usuario(int id, String newData, String nome, String email, String senha, String endereco, String cpf, String cnpj, String bairro, String cidade, 
             String estado, String cep, String telResi, String telCome, String celResi, String celCome, 
             String comple, int tipoUsuario, String nomeEmp, String emailEmp, String cnpjEmp, String enderecoEmp, String bairroEmp, String cidadeEmp, String estadoEmp, String cepEmp, 
             String telEmp, String celEmp, String compleEmp, String arqEmp) { //Construtor do usuario:
-        this.data = data;
+        this.id = id;
+        this.newData = newData;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -80,8 +81,12 @@ public class Usuario {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public String getData() { //get do nome
-        return data;
+    public int getId(){
+        return id;
+    }
+    
+    public String getNewData() { //get do nome
+        return newData;
     }
 
     public String getNome() { //get do nome
@@ -148,8 +153,12 @@ public class Usuario {
         return tipoUsuario;
     }
     
-    public void setData(String data) { //set do nome
-        this.data = data;
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public void setNewData(String newData) { //set do nome
+        this.newData = newData;
     }
     
     public void setNome(String nome) { //set do nome

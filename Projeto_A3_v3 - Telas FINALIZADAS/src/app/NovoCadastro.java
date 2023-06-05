@@ -44,7 +44,6 @@ public class NovoCadastro extends javax.swing.JFrame {
         btMenu = new javax.swing.JButton();
         btHistorico1 = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
-        btAtualizar = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -191,13 +190,9 @@ public class NovoCadastro extends javax.swing.JFrame {
         btExcluir.setBackground(new java.awt.Color(255, 153, 153));
         btExcluir.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btExcluir.setText("EXCLUIR");
-
-        btAtualizar.setBackground(new java.awt.Color(204, 255, 255));
-        btAtualizar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btAtualizar.setText("ATUALIZAR");
-        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAtualizarActionPerformed(evt);
+                btExcluirActionPerformed(evt);
             }
         });
 
@@ -707,19 +702,17 @@ public class NovoCadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btHistorico1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(314, 314, 314)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jScrollPane2)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -735,7 +728,6 @@ public class NovoCadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btHistorico1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -813,10 +805,6 @@ public class NovoCadastro extends javax.swing.JFrame {
         historico.setVisible(true);
         dispose();
     }//GEN-LAST:event_btHistorico1ActionPerformed
-
-    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAtualizarActionPerformed
 
     private void txtEmailEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailEmpActionPerformed
         // TODO add your handling code here:
@@ -939,7 +927,7 @@ public class NovoCadastro extends javax.swing.JFrame {
             
             try{
             
-                Usuario usuario = new Usuario(data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario,
+                Usuario usuario = new Usuario(0, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario,
                 nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp);DAO dao = new DAO();
 
                 dao.cadastrarUsuario(usuario);
@@ -968,6 +956,37 @@ public class NovoCadastro extends javax.swing.JFrame {
     private void txtCelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelResActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCelResActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        // TODO add your handling code here:
+        txtArqEmp.setText("");
+        txtBairro.setText("");
+        txtBairroEmp.setText("");
+        txtCelCom.setText("");
+        txtCelEmp.setText("");
+        txtCelRes.setText("");
+        txtCep.setText("");
+        txtCepEmp.setText("");
+        txtCidade.setText("");
+        txtCidadeEmp.setText("");
+        txtCnpj.setText("");
+        txtCnpjEmp.setText("");
+        txtComple.setText("");
+        txtCompleEmp.setText("");
+        txtCpf.setText("");
+        txtData.setText("");
+        txtEmail.setText("");
+        txtEmailEmp.setText("");
+        txtEndereco.setText("");
+        txtEnderecoEmp.setText("");
+        txtEstado.setText("");
+        txtEstadoEmp.setText("");
+        txtNome.setText("");
+        txtNomeEmp.setText("");
+        txtTelCom.setText("");
+        txtTelEmp.setText("");
+        txtTelRes.setText("");
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1009,7 +1028,6 @@ public class NovoCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btArquivos;
-    private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btHistorico1;
     private javax.swing.JButton btMenu;

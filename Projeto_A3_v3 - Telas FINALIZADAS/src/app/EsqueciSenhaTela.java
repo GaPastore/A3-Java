@@ -46,7 +46,7 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Esqueci a senha");
+        setTitle("Esqueci a Senha");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

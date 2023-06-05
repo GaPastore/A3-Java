@@ -64,7 +64,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         tbHistorico = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Histórico e cadastros");
+        setTitle("Histórico de Cadastro");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -413,6 +413,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
 
     private void btFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrarActionPerformed
         // TODO add your handling code here:
+        String id = txtId.getText();
         String email = txtEmail.getText();
         String nome = txtNome.getText();
         String cpf = txtCpf.getText();
@@ -420,7 +421,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         String nomeEmp = txtNomeEmp.getText();
         String cnpjEmp = txtCnpjEmp.getText();
         
-        Usuario usuario = new Usuario(data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, 2,
+        Usuario usuario = new Usuario(0, data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, 2,
         nomeEmp, null, cnpjEmp, null, null, null, null, null, null, null, null, null);
         DAO dao = new DAO();
         
@@ -428,6 +429,9 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         
         if(!data.matches("")){
             txtSqlUser = txtSqlUser + " and new_data = '" + data + "'";
+        }
+        if(!id.matches("")){
+            txtSqlUser = txtSqlUser + " and id = '" + id + "'";
         }
         if(!nome.matches("")){
             txtSqlUser = txtSqlUser + " and nome = '" + nome + "'";
@@ -460,7 +464,65 @@ public class HistoricoCadastro extends javax.swing.JFrame {
     private void bteditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteditarActionPerformed
         // TODO add your handling code here:
         DefaultTableModel dtm = (DefaultTableModel) tbHistorico.getModel();
-        dtm.isCellEditable(tbHistorico.getRowCount(), tbHistorico.getColumnCount());
+        
+        String id = (String)dtm.getValueAt(tbHistorico.getSelectedRow(), 0);
+        int realId = Integer.parseInt(id);
+        
+        Usuario usuario = new Usuario(realId, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2,
+        null, null, null, null, null, null, null, null, null, null, null, null);
+        DAO dao = new DAO();
+        
+        try {
+            
+            if(tbHistorico.getSelectedRow() > -1){
+            
+                EditarCadastro editarCadastro = new EditarCadastro();
+                editarCadastro.setVisible(true);
+                dao.apontaUsuario(usuario, id);
+                editarCadastro.txtNome.setText(usuario.getNome());
+                editarCadastro.txtData.setText(usuario.getNewData());
+                editarCadastro.txtEmail.setText(usuario.getEmail());
+                editarCadastro.txtCpf.setText(usuario.getCpf());
+                editarCadastro.txtCepEmp.setText(usuario.getCepEmp());
+                editarCadastro.txtCep.setText(usuario.getCep());
+                editarCadastro.txtCidadeEmp.setText(usuario.getCidadeEmp());
+                editarCadastro.txtCidade.setText(usuario.getCidade());
+                editarCadastro.txtBairro.setText(usuario.getBairro());
+                editarCadastro.txtBairroEmp.setText(usuario.getBairroEmp());
+                editarCadastro.txtCnpj.setText(usuario.getCnpj());
+                editarCadastro.txtTelCom.setText(usuario.getTelCome());
+                editarCadastro.txtTelRes.setText(usuario.getTelResi());
+                editarCadastro.txtTelEmp.setText(usuario.getTelEmp());
+                editarCadastro.txtCelCom.setText(usuario.getCelCome());
+                editarCadastro.txtCelRes.setText(usuario.getCelResi());
+                editarCadastro.txtCelEmp.setText(usuario.getCelEmp());
+                editarCadastro.txtArqEmp.setText(usuario.getArq());
+                editarCadastro.txtCnpjEmp.setText(usuario.getCnpjEmp());
+                editarCadastro.txtNomeEmp.setText(usuario.getNomeEmp());
+                editarCadastro.txtComple.setText(usuario.getComple());
+                editarCadastro.txtEndereco.setText(usuario.getEndereco());
+                editarCadastro.txtEnderecoEmp.setText(usuario.getEnderecoEmp());
+                editarCadastro.txtEstado.setText(usuario.getEstado());
+                editarCadastro.txtEstado.setText(usuario.getEstado());
+                editarCadastro.txtEstadoEmp.setText(usuario.getEstadoEmp());
+                editarCadastro.txtCompleEmp.setText(usuario.getCompleEmp());
+                editarCadastro.txtEmailEmp.setText(usuario.getEmailEmp());
+                editarCadastro.txtArqEmp.setText(usuario.getArq());
+                editarCadastro.txtArqEmp.setText(usuario.getArq());
+                dispose();
+        
+            } else {
+                
+                JOptionPane.showMessageDialog(null, "Selecione um usuário para a edição!");
+            
+            }
+            
+        } catch (Exception e){
+            
+                JOptionPane.showMessageDialog(null, "Problemas técnicos!");
+                e.printStackTrace();
+            
+        }
         
     }//GEN-LAST:event_bteditarActionPerformed
 

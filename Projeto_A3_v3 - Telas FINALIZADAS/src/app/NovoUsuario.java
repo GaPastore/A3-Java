@@ -19,6 +19,7 @@ public class NovoUsuario extends javax.swing.JFrame {
      */
     public NovoUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -66,6 +67,7 @@ public class NovoUsuario extends javax.swing.JFrame {
         txtEstado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Usuário");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(450, 500));
@@ -477,7 +479,7 @@ public class NovoUsuario extends javax.swing.JFrame {
             
             try{
             
-                Usuario usuario = new Usuario(null, nome, email, senha, endereco, null, null, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, null
+                Usuario usuario = new Usuario(0, null, nome, email, senha, endereco, null, null, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, null
                 , null, null, null, null, null, null, null, null, null, null, null);
                 DAO dao = new DAO();
 
