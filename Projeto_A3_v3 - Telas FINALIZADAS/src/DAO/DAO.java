@@ -147,6 +147,28 @@ public class DAO {
         
     }
     
+    public void excluirUsuario(Usuario objUsuario) throws Exception{
+        
+        String sql = "delete from tb_usuario where id = ?";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
+            
+            ps.setInt(1, objUsuario.getId());
+            
+            try {
+                
+                int rs = ps.executeUpdate();
+                
+            } catch (Exception e){
+                
+                e.printStackTrace();
+            
+            }
+            
+        }
+        
+    }
+    
     public void cadastrarUsuario(Usuario objUsuario) throws Exception{
 
         String sql = "insert into tb_usuario (new_data, nome, email, senha, endereco, cpf, cnpj, bairro, cidade, estado, cep, tel_resi, cel_resi, tel_come, cel_come, comple, tipo_usuario, "

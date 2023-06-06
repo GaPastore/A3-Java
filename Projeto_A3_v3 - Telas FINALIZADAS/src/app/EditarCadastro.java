@@ -34,6 +34,7 @@ public class EditarCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         btSair = new javax.swing.JButton();
@@ -77,6 +78,8 @@ public class EditarCadastro extends javax.swing.JFrame {
         txtCelCom = new javax.swing.JTextField();
         t20 = new javax.swing.JLabel();
         txtData = new javax.swing.JFormattedTextField();
+        t7 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
         t21 = new javax.swing.JLabel();
@@ -105,8 +108,10 @@ public class EditarCadastro extends javax.swing.JFrame {
         btArquivos = new javax.swing.JButton();
         txtCelEmp = new javax.swing.JTextField();
 
+        jLabel2.setText("jLabel2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Novo Cadastro");
+        setTitle("Editar Cadastro");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -146,7 +151,7 @@ public class EditarCadastro extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Materiais/novo_cadas_txt.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Materiais/editar cadastro.png"))); // NOI18N
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -215,7 +220,7 @@ public class EditarCadastro extends javax.swing.JFrame {
             }
         });
 
-        t4.setText("Nome:");
+        t4.setText("ID:");
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,6 +332,15 @@ public class EditarCadastro extends javax.swing.JFrame {
             }
         });
 
+        t7.setText("Nome:");
+
+        txtId.setEditable(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -340,16 +354,22 @@ public class EditarCadastro extends javax.swing.JFrame {
                             .addComponent(text1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(txtEstado)
                             .addComponent(txtData))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(t4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(t15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
-                            .addComponent(txtNome)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(t4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(t7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNome))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(t15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -403,8 +423,7 @@ public class EditarCadastro extends javax.swing.JFrame {
                                 .addGap(12, 12, 12)
                                 .addComponent(t6)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(29, 29, 29))
+                                .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,7 +433,9 @@ public class EditarCadastro extends javax.swing.JFrame {
                     .addComponent(text1)
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t4))
+                    .addComponent(t4)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(t7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(t14)
@@ -565,8 +586,8 @@ public class EditarCadastro extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtArqEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btArquivos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btArquivos, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -589,30 +610,15 @@ public class EditarCadastro extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(t23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNomeEmp))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                .addComponent(t28)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtEstadoEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(t21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtEmailEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(t25)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCnpjEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(t30)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtBairroEmp)
@@ -623,8 +629,8 @@ public class EditarCadastro extends javax.swing.JFrame {
                                 .addGap(25, 25, 25)
                                 .addComponent(t31)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCepEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(txtCepEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addComponent(t32)
@@ -640,13 +646,24 @@ public class EditarCadastro extends javax.swing.JFrame {
                                     .addComponent(jLabel13))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCompleEmp)
-                                    .addComponent(txtCelEmp))))
-                        .addGap(28, 28, 28))))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+                                    .addComponent(txtCelEmp)
+                                    .addComponent(txtCompleEmp)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(t28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtEstadoEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(t21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtEmailEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(t25)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCnpjEmp))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,20 +715,20 @@ public class EditarCadastro extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btHistorico1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(314, 314, 314)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btHistorico1)
+                .addGap(18, 18, 18)
+                .addComponent(btMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(306, 306, 306)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -882,7 +899,7 @@ public class EditarCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
         String data, nome, email, cpf, cnpj, endereco, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple;
         String nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp;
-        int tipoUsuario;
+        int tipoUsuario, id;
         
         data = txtData.getText();
         nome = txtNome.getText();
@@ -913,6 +930,7 @@ public class EditarCadastro extends javax.swing.JFrame {
         telComEmp = txtTelEmp.getText();
         celComEmp = txtCelEmp.getText();
         arqEmp = txtArqEmp.getText();
+        id = Integer.parseInt(txtId.getText());
         
         if(nome.matches("") || email.matches("") || endereco.matches("") || bairro.matches("") || cidade.matches("")
                 || estado.matches("") || cep.matches("") || telResi.matches("") || telCome.matches("") || celResi.matches("") || celCome.matches("")
@@ -925,10 +943,11 @@ public class EditarCadastro extends javax.swing.JFrame {
         } else {
             
             try{
-            
-                Usuario usuario = new Usuario(0, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario,
-                nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp);DAO dao = new DAO();
-
+                
+                Usuario usuario = new Usuario(id, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario,
+                nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp);
+                DAO dao = new DAO();
+                
                 dao.alterarUsuario(usuario);
                 JOptionPane.showMessageDialog(null, "Cliente atualizado!");
             
@@ -958,34 +977,61 @@ public class EditarCadastro extends javax.swing.JFrame {
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-        txtArqEmp.setText("");
-        txtBairro.setText("");
-        txtBairroEmp.setText("");
-        txtCelCom.setText("");
-        txtCelEmp.setText("");
-        txtCelRes.setText("");
-        txtCep.setText("");
-        txtCepEmp.setText("");
-        txtCidade.setText("");
-        txtCidadeEmp.setText("");
-        txtCnpj.setText("");
-        txtCnpjEmp.setText("");
-        txtComple.setText("");
-        txtCompleEmp.setText("");
-        txtCpf.setText("");
-        txtData.setText("");
-        txtEmail.setText("");
-        txtEmailEmp.setText("");
-        txtEndereco.setText("");
-        txtEnderecoEmp.setText("");
-        txtEstado.setText("");
-        txtEstadoEmp.setText("");
-        txtNome.setText("");
-        txtNomeEmp.setText("");
-        txtTelCom.setText("");
-        txtTelEmp.setText("");
-        txtTelRes.setText("");
+        
+        int id = Integer.parseInt(txtId.getText());
+        
+        try{
+                
+                Usuario usuario = new Usuario(id, null, null, null, null, null, null, null, null, null, null, null, 
+                        null, null, null, null, null, 0,null, null, null, null, null, 
+                        null, null, null, null, null, null, null);
+                DAO dao = new DAO();
+                
+                dao.excluirUsuario(usuario);
+                JOptionPane.showMessageDialog(null, "Cliente excluído!");
+                
+                txtId.setText("");
+                txtArqEmp.setText("");
+                txtBairro.setText("");
+                txtBairroEmp.setText("");
+                txtCelCom.setText("");
+                txtCelEmp.setText("");
+                txtCelRes.setText("");
+                txtCep.setText("");
+                txtCepEmp.setText("");
+                txtCidade.setText("");
+                txtCidadeEmp.setText("");
+                txtCnpj.setText("");
+                txtCnpjEmp.setText("");
+                txtComple.setText("");
+                txtCompleEmp.setText("");
+                txtCpf.setText("");
+                txtData.setText("");
+                txtEmail.setText("");
+                txtEmailEmp.setText("");
+                txtEndereco.setText("");
+                txtEnderecoEmp.setText("");
+                txtEstado.setText("");
+                txtEstadoEmp.setText("");
+                txtNome.setText("");
+                txtNomeEmp.setText("");
+                txtTelCom.setText("");
+                txtTelEmp.setText("");
+                txtTelRes.setText("");
+            
+            }
+            catch (Exception e){
+            
+                JOptionPane.showMessageDialog(null, "Problemas técnicos!");
+                e.printStackTrace();
+            
+            }
+        
     }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1039,6 +1085,7 @@ public class EditarCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -1072,6 +1119,7 @@ public class EditarCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel t4;
     private javax.swing.JLabel t5;
     private javax.swing.JLabel t6;
+    private javax.swing.JLabel t7;
     private javax.swing.JLabel text1;
     public javax.swing.JTextField txtArqEmp;
     public javax.swing.JTextField txtBairro;
@@ -1095,6 +1143,7 @@ public class EditarCadastro extends javax.swing.JFrame {
     public javax.swing.JTextField txtEnderecoEmp;
     public javax.swing.JTextField txtEstado;
     public javax.swing.JTextField txtEstadoEmp;
+    public javax.swing.JTextField txtId;
     public javax.swing.JTextField txtNome;
     public javax.swing.JTextField txtNomeEmp;
     public javax.swing.JTextField txtTelCom;

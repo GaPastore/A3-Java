@@ -56,9 +56,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         btmenu = new javax.swing.JButton();
-        btexcluir = new javax.swing.JButton();
         bteditar = new javax.swing.JButton();
-        btsalvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbHistorico = new javax.swing.JTable();
@@ -268,10 +266,6 @@ public class HistoricoCadastro extends javax.swing.JFrame {
             }
         });
 
-        btexcluir.setBackground(new java.awt.Color(255, 204, 204));
-        btexcluir.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btexcluir.setText("EXCLUIR");
-
         bteditar.setBackground(new java.awt.Color(204, 255, 255));
         bteditar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         bteditar.setText("EDITAR");
@@ -280,10 +274,6 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                 bteditarActionPerformed(evt);
             }
         });
-
-        btsalvar.setBackground(new java.awt.Color(204, 255, 204));
-        btsalvar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btsalvar.setText("SALVAR");
 
         tbHistorico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -330,11 +320,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(btsalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(bteditar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btexcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -351,10 +337,8 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btsalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bteditar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btexcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bteditar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -509,6 +493,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                 editarCadastro.txtEmailEmp.setText(usuario.getEmailEmp());
                 editarCadastro.txtArqEmp.setText(usuario.getArq());
                 editarCadastro.txtArqEmp.setText(usuario.getArq());
+                editarCadastro.txtId.setText(String.valueOf(usuario.getId()));
                 dispose();
         
             } else {
@@ -566,9 +551,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
     private javax.swing.JButton btFiltrar;
     private javax.swing.JButton btLogOut;
     private javax.swing.JButton bteditar;
-    private javax.swing.JButton btexcluir;
     private javax.swing.JButton btmenu;
-    private javax.swing.JButton btsalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
