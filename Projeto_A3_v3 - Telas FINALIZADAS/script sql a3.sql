@@ -21,13 +21,6 @@ create table tb_usuario (
     tel_come varchar(10), #sem formatação
     cel_come varchar(11), #sem formatação
     comple varchar(15),
-    tipo_usuario int(1)
-    );
-
-drop table tb_empresa;
-
-create table tb_empresa (
-    id int primary key auto_increment,
     bairro_emp varchar(30),
     cidade_emp varchar(20),
     endereco_emp varchar(45),
@@ -39,11 +32,8 @@ create table tb_empresa (
     cel_emp varchar(8),
     nome_emp varchar(50),
     comp_emp varchar(15),
-    arq_emp varchar(50)
-);
-#insert into tb_empresa (bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    arq_emp varchar(50),
+    tipo_usuario int(1)
+    );
 
-#select * from tb_usuario where tipo_usuario = 2 and new_data = "11/11/1111" and nome = 'b';
-
-select * from tb_empresa;
 select * from tb_usuario;
