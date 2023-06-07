@@ -40,11 +40,12 @@ public class Usuario {
     private String celEmp;
     private String compleEmp;
     private String arqEmp;
+    private int aprovado;
 
     public Usuario(int id, String newData, String nome, String email, String senha, String endereco, String cpf, String cnpj, String bairro, String cidade, 
             String estado, String cep, String telResi, String telCome, String celResi, String celCome, 
             String comple, int tipoUsuario, String nomeEmp, String emailEmp, String cnpjEmp, String enderecoEmp, String bairroEmp, String cidadeEmp, String estadoEmp, String cepEmp, 
-            String telEmp, String celEmp, String compleEmp, String arqEmp) { //Construtor do usuario:
+            String telEmp, String celEmp, String compleEmp, String arqEmp, int aprovado) { //Construtor do usuario:
         this.id = id;
         this.newData = newData;
         this.nome = nome;
@@ -75,6 +76,7 @@ public class Usuario {
         this.celEmp = celEmp;
         this.compleEmp = compleEmp;
         this.arqEmp = arqEmp;
+        this.aprovado = aprovado;
     }
 
     public Usuario(String login, String senha) {
@@ -153,6 +155,10 @@ public class Usuario {
         return tipoUsuario;
     }
     
+    public int getAprovado() { //get da senha
+        return aprovado;
+    }
+    
     public void setId(int id){
         this.id = id;
     }
@@ -223,6 +229,10 @@ public class Usuario {
 
     public void setTipoUsuario(int tipoUsuario) {//set da senha
         this.tipoUsuario = tipoUsuario;
+    }
+    
+    public void setAprovado(int aprovado) {//set da senha
+        this.aprovado = aprovado;
     }
 
     public String getNomeEmp() { //get do nome

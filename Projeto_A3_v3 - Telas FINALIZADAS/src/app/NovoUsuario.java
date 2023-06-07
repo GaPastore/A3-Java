@@ -480,7 +480,7 @@ public class NovoUsuario extends javax.swing.JFrame {
             try{
             
                 Usuario usuario = new Usuario(0, null, nome, email, senha, endereco, null, null, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, null
-                , null, null, null, null, null, null, null, null, null, null, null);
+                , null, null, null, null, null, null, null, null, null, null, null, 0);
                 DAO dao = new DAO();
 
                 dao.cadastrarUsuario(usuario);

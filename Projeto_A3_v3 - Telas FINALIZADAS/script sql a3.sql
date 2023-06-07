@@ -21,6 +21,7 @@ create table tb_usuario (
     tel_come varchar(10), #sem formatação
     cel_come varchar(11), #sem formatação
     comple varchar(15),
+    tipo_usuario int(1),
     bairro_emp varchar(30),
     cidade_emp varchar(20),
     endereco_emp varchar(45),
@@ -33,7 +34,11 @@ create table tb_usuario (
     nome_emp varchar(50),
     comp_emp varchar(15),
     arq_emp varchar(50),
-    tipo_usuario int(1)
+    aprovado int(1)
     );
+
+#select * from tb_usuario where tipo_usuario = 2 and new_data = "11/11/1111" and nome = 'b';
+
+#update tb_usuario set nome = "fg" where id = 3;
 
 select * from tb_usuario;

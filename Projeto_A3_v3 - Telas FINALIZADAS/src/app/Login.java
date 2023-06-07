@@ -222,7 +222,7 @@ public class Login extends javax.swing.JFrame {
         try{
             
             Usuario usuario = new Usuario(0, null, null, email, senha, null, null, null, null, null, null, null, null, null, null, null, null, 1
-            , null, null, null, null, null, null, null, null, null, null, null, null);
+            , null, null, null, null, null, null, null, null, null, null, null, null, 0);
             DAO dao = new DAO();
 
             if (dao.existeUsuario(usuario)){

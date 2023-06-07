@@ -23,6 +23,8 @@ public class EditarCadastro extends javax.swing.JFrame {
     public EditarCadastro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -80,6 +82,8 @@ public class EditarCadastro extends javax.swing.JFrame {
         txtData = new javax.swing.JFormattedTextField();
         t7 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        t22 = new javax.swing.JLabel();
+        txtAprovado = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
         t21 = new javax.swing.JLabel();
@@ -341,6 +345,10 @@ public class EditarCadastro extends javax.swing.JFrame {
             }
         });
 
+        t22.setText("Estado de Análise: ");
+
+        txtAprovado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Em Análise", "Negado", "Aprovado" }));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -389,9 +397,15 @@ public class EditarCadastro extends javax.swing.JFrame {
                             .addComponent(txtCelCom, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                             .addComponent(txtTelRes))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(t19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCelRes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(t19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCelRes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(t22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtAprovado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
@@ -475,7 +489,9 @@ public class EditarCadastro extends javax.swing.JFrame {
                     .addComponent(txtTelCom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(t13)
                     .addComponent(txtCelCom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t20))
+                    .addComponent(t20)
+                    .addComponent(t22)
+                    .addComponent(txtAprovado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -899,7 +915,7 @@ public class EditarCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
         String data, nome, email, cpf, cnpj, endereco, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple;
         String nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp;
-        int tipoUsuario, id;
+        int tipoUsuario, id, aprovado;
         
         data = txtData.getText();
         nome = txtNome.getText();
@@ -931,12 +947,13 @@ public class EditarCadastro extends javax.swing.JFrame {
         celComEmp = txtCelEmp.getText();
         arqEmp = txtArqEmp.getText();
         id = Integer.parseInt(txtId.getText());
+        aprovado = txtAprovado.getSelectedIndex();
         
         if(nome.matches("") || email.matches("") || endereco.matches("") || bairro.matches("") || cidade.matches("")
                 || estado.matches("") || cep.matches("") || telResi.matches("") || telCome.matches("") || celResi.matches("") || celCome.matches("")
                 || comple.matches("") || nomeEmp.matches("") || emailEmp.matches("") || estadoEmp.matches("") || enderecoEmp.matches("")
                 || bairroEmp.matches("") || cidadeEmp.matches("") || cnpjEmp.matches("") || cepEmp.matches("") || compleEmp.matches("")
-                || telComEmp.matches("") || celComEmp.matches("") || arqEmp.matches("")){
+                || telComEmp.matches("") || celComEmp.matches("") || arqEmp.matches("") || aprovado == 0){
             
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         
@@ -945,11 +962,13 @@ public class EditarCadastro extends javax.swing.JFrame {
             try{
                 
                 Usuario usuario = new Usuario(id, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario,
-                nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp);
+                nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp, aprovado);
                 DAO dao = new DAO();
                 
                 dao.alterarUsuario(usuario);
                 JOptionPane.showMessageDialog(null, "Cliente atualizado!");
+                btHistorico1ActionPerformed(evt);
+                
             
             }
             catch (Exception e){
@@ -984,41 +1003,17 @@ public class EditarCadastro extends javax.swing.JFrame {
                 
                 Usuario usuario = new Usuario(id, null, null, null, null, null, null, null, null, null, null, null, 
                         null, null, null, null, null, 0,null, null, null, null, null, 
-                        null, null, null, null, null, null, null);
+                        null, null, null, null, null, null, null, 0);
                 DAO dao = new DAO();
                 
-                dao.excluirUsuario(usuario);
-                JOptionPane.showMessageDialog(null, "Cliente excluído!");
-                
-                txtId.setText("");
-                txtArqEmp.setText("");
-                txtBairro.setText("");
-                txtBairroEmp.setText("");
-                txtCelCom.setText("");
-                txtCelEmp.setText("");
-                txtCelRes.setText("");
-                txtCep.setText("");
-                txtCepEmp.setText("");
-                txtCidade.setText("");
-                txtCidadeEmp.setText("");
-                txtCnpj.setText("");
-                txtCnpjEmp.setText("");
-                txtComple.setText("");
-                txtCompleEmp.setText("");
-                txtCpf.setText("");
-                txtData.setText("");
-                txtEmail.setText("");
-                txtEmailEmp.setText("");
-                txtEndereco.setText("");
-                txtEnderecoEmp.setText("");
-                txtEstado.setText("");
-                txtEstadoEmp.setText("");
-                txtNome.setText("");
-                txtNomeEmp.setText("");
-                txtTelCom.setText("");
-                txtTelEmp.setText("");
-                txtTelRes.setText("");
+                int selection = JOptionPane.showConfirmDialog(null, "Confirmar exclusão?", "Exclusão", JOptionPane.YES_NO_OPTION);
+                if(selection == 0){
+                    dao.excluirUsuario(usuario);
+                    JOptionPane.showMessageDialog(null, "Cliente excluído!");
+                    btHistorico1ActionPerformed(evt);
             
+                }
+                
             }
             catch (Exception e){
             
@@ -1107,6 +1102,7 @@ public class EditarCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel t2;
     private javax.swing.JLabel t20;
     private javax.swing.JLabel t21;
+    private javax.swing.JLabel t22;
     private javax.swing.JLabel t23;
     private javax.swing.JLabel t25;
     private javax.swing.JLabel t27;
@@ -1121,6 +1117,7 @@ public class EditarCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel t6;
     private javax.swing.JLabel t7;
     private javax.swing.JLabel text1;
+    public javax.swing.JComboBox<String> txtAprovado;
     public javax.swing.JTextField txtArqEmp;
     public javax.swing.JTextField txtBairro;
     public javax.swing.JTextField txtBairroEmp;

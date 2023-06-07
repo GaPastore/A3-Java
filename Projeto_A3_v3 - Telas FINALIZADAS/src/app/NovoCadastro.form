@@ -282,17 +282,14 @@
                                       <Component id="txtData" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="t4" min="-2" pref="110" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtNome" min="-2" pref="562" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="t15" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtEndereco" min="-2" pref="617" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="t4" max="32767" attributes="0"/>
+                                      <Component id="t15" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtEndereco" pref="617" max="32767" attributes="0"/>
+                                      <Component id="txtNome" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -300,7 +297,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="t13" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txtTelCom" max="32767" attributes="0"/>
+                                          <Component id="txtTelCom" pref="193" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="t18" min="-2" max="-2" attributes="0"/>
@@ -448,7 +445,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="t4">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nome Empresarial:"/>
+                    <Property name="text" type="java.lang.String" value="Nome:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtNome">
@@ -846,7 +843,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtArqEmp" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btArquivos" max="32767" attributes="0"/>
+                              <Component id="btArquivos" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>

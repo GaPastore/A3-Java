@@ -21,7 +21,7 @@ public class DAO {
     
     public boolean existeUsuario(Usuario objUsuario) throws Exception{
         
-        String sql = "select * from tb_usuario where email = ? and senha = ?";
+        String sql = "select * from tb_usuario where tipo_usuario = 1 and email = ? and senha = ?";
         
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){ //Ida
             
@@ -40,7 +40,7 @@ public class DAO {
     
     public void apontaUsuario(Usuario objUsuario, String id) throws Exception{
         
-        String sql = "select * from tb_usuario where id = ?";
+        String sql = "select * from tb_usuario where tipo_usuario = 2 and id = ?";
         
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){ //Ida
             
@@ -50,7 +50,7 @@ public class DAO {
                 
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                    objUsuario.setId(Integer.parseInt(rs.getString("id")));
+                    objUsuario.setId(rs.getInt("id"));
                     objUsuario.setNewData(rs.getString("new_data"));
                     objUsuario.setNome(rs.getString("nome"));
                     objUsuario.setNomeEmp(rs.getString("nome_emp"));
@@ -78,6 +78,7 @@ public class DAO {
                     objUsuario.setEstadoEmp(rs.getString("estado_emp"));
                     objUsuario.setEstado(rs.getString("estado"));
                     objUsuario.setArq(rs.getString("arq_emp"));
+                    objUsuario.setAprovado(rs.getInt("aprovado"));
                 }
                 
                 
@@ -98,7 +99,7 @@ public class DAO {
                 + "cnpj = ?, bairro = ?, cidade = ?, estado = ?, cep = ?, tel_resi = ?, cel_resi = ?, "
                 + "tel_come = ?, cel_come = ?, comple = ?, tipo_usuario = ?, bairro_emp = ?, cidade_emp = ?, "
                 + "endereco_emp = ?, email_emp = ?, estado_emp = ?, cep_emp = ?, cnpj_emp = ?, tel_emp = ?, "
-                + "cel_emp = ?, nome_emp = ?, comp_emp = ?, arq_emp = ? where id = ?";
+                + "cel_emp = ?, nome_emp = ?, comp_emp = ?, arq_emp = ?, aprovado = ? where id = ?";
         
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -131,7 +132,8 @@ public class DAO {
             ps.setString(27, objUsuario.getNomeEmp());
             ps.setString(28, objUsuario.getCompleEmp());
             ps.setString(29, objUsuario.getArq());
-            ps.setInt(30, objUsuario.getId());
+            ps.setInt(30, objUsuario.getAprovado());
+            ps.setInt(31, objUsuario.getId());
             
             try {
                 
@@ -172,8 +174,8 @@ public class DAO {
     public void cadastrarUsuario(Usuario objUsuario) throws Exception{
 
         String sql = "insert into tb_usuario (new_data, nome, email, senha, endereco, cpf, cnpj, bairro, cidade, estado, cep, tel_resi, cel_resi, tel_come, cel_come, comple, tipo_usuario, "
-                + "bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp) " 
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp, aprovado) " 
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -206,6 +208,7 @@ public class DAO {
             ps.setString(27, objUsuario.getNomeEmp());
             ps.setString(28, objUsuario.getCompleEmp());
             ps.setString(29, objUsuario.getArq());
+            ps.setInt(30, objUsuario.getAprovado());
             
             
             try {
@@ -248,6 +251,13 @@ public class DAO {
                table.setValueAt(rs.getString("email"), i, 3);
                table.setValueAt(rs.getString("cep"), i, 4);
                table.setValueAt(rs.getString("cnpj_emp"), i, 5);
+               if(rs.getInt("aprovado") == 1){
+                   table.setValueAt("Em Análise", i, 6);
+               } else if(rs.getInt("aprovado") == 2){
+                   table.setValueAt("Negado", i, 6);
+               } else if(rs.getInt("aprovado") == 3){
+                   table.setValueAt("Aprovado", i, 6);
+               }
                i++;
             }
             

@@ -23,6 +23,8 @@ public class NovoCadastro extends javax.swing.JFrame {
     public NovoCadastro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -215,7 +217,7 @@ public class NovoCadastro extends javax.swing.JFrame {
             }
         });
 
-        t4.setText("Nome Empresarial:");
+        t4.setText("Nome:");
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,21 +345,19 @@ public class NovoCadastro extends javax.swing.JFrame {
                             .addComponent(txtEstado)
                             .addComponent(txtData))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(t4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(t15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(t4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(t15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
+                            .addComponent(txtNome)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(t13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTelCom))
+                                .addComponent(txtTelCom, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(t18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -567,7 +567,7 @@ public class NovoCadastro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(txtArqEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btArquivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btArquivos)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -911,6 +911,7 @@ public class NovoCadastro extends javax.swing.JFrame {
         celComEmp = txtCelEmp.getText();
         arqEmp = txtArqEmp.getText();
         
+        
         if(nome.matches("") || email.matches("") || endereco.matches("") || bairro.matches("") || cidade.matches("")
                 || estado.matches("") || cep.matches("") || telResi.matches("") || telCome.matches("") || celResi.matches("") || celCome.matches("")
                 || comple.matches("") || nomeEmp.matches("") || emailEmp.matches("") || estadoEmp.matches("") || enderecoEmp.matches("")
@@ -924,11 +925,12 @@ public class NovoCadastro extends javax.swing.JFrame {
             try{
             
                 Usuario usuario = new Usuario(0, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario,
-                nomeEmp, emailEmp, estadoEmp, enderecoEmp, bairroEmp, cidadeEmp, cnpjEmp, cepEmp, compleEmp, telComEmp, celComEmp, arqEmp);
+                nomeEmp, emailEmp, cnpjEmp, enderecoEmp, bairroEmp, cidadeEmp, estadoEmp, cepEmp, telComEmp, celComEmp, compleEmp, arqEmp, 1);
                 DAO dao = new DAO();
 
                 dao.cadastrarUsuario(usuario);
                 JOptionPane.showMessageDialog(null, "Cliente cadastrado!");
+                btExcluirActionPerformed(evt);
             
             }
             catch (Exception e){

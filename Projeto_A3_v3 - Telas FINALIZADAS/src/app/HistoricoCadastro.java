@@ -21,6 +21,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
     public HistoricoCadastro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -51,8 +52,10 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         txtCnpjEmp = new javax.swing.JTextField();
         t6 = new javax.swing.JLabel();
         text1 = new javax.swing.JLabel();
-        txtData = new javax.swing.JTextField();
         btFiltrar = new javax.swing.JButton();
+        t7 = new javax.swing.JLabel();
+        txtAprovado = new javax.swing.JComboBox<>();
+        txtData = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         btmenu = new javax.swing.JButton();
@@ -165,6 +168,28 @@ public class HistoricoCadastro extends javax.swing.JFrame {
             }
         });
 
+        t7.setText("Estado de Análise: ");
+
+        txtAprovado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Em Análise", "Negado", "Aprovado" }));
+        txtAprovado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAprovadoActionPerformed(evt);
+            }
+        });
+
+        try {
+            txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtData.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtData.setText("  /  /    ");
+        txtData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -173,13 +198,10 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 635, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(t2)
                             .addComponent(text1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtData)
@@ -187,7 +209,13 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                                 .addComponent(text)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtEmail))
+                            .addComponent(txtEmail)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(t7)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtAprovado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -207,7 +235,10 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(t5)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(btFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
@@ -232,7 +263,11 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                     .addComponent(t6)
                     .addComponent(t4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(t7)
+                        .addComponent(txtAprovado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
 
@@ -277,17 +312,17 @@ public class HistoricoCadastro extends javax.swing.JFrame {
 
         tbHistorico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Nome Empresarial", "E-mail", "CPF", "CNPJ", "Aprovado", "Em espera", "Negado"
+                "ID", "Nome", "Nome Empresarial", "E-mail", "CPF", "CNPJ", "Estado de Análise"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -310,7 +345,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(265, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(260, 260, 260))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -404,14 +439,16 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         String data = txtData.getText();
         String nomeEmp = txtNomeEmp.getText();
         String cnpjEmp = txtCnpjEmp.getText();
+        int aprovado = txtAprovado.getSelectedIndex();
+        
         
         Usuario usuario = new Usuario(0, data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, 2,
-        nomeEmp, null, cnpjEmp, null, null, null, null, null, null, null, null, null);
+        nomeEmp, null, cnpjEmp, null, null, null, null, null, null, null, null, null, 0);
         DAO dao = new DAO();
         
-        String txtSqlUser = "select * from tb_usuario where tipo_usuario = 2";
+        String txtSqlUser = "select * from tb_usuario where tipo_usuario = 2 ";
         
-        if(!data.matches("")){
+        if(!data.matches("  /  /    ")){
             txtSqlUser = txtSqlUser + " and new_data = '" + data + "'";
         }
         if(!id.matches("")){
@@ -432,6 +469,9 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         if(!cnpjEmp.matches("")){
             txtSqlUser = txtSqlUser + " and cnpj_emp = '" + cnpjEmp + "'";
         }
+        if(aprovado != 0){
+            txtSqlUser = txtSqlUser + " and aprovado = " + aprovado;
+        }
         
         try {
         
@@ -449,16 +489,15 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel dtm = (DefaultTableModel) tbHistorico.getModel();
         
-        String id = (String)dtm.getValueAt(tbHistorico.getSelectedRow(), 0);
-        int realId = Integer.parseInt(id);
-        
-        Usuario usuario = new Usuario(realId, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2,
-        null, null, null, null, null, null, null, null, null, null, null, null);
-        DAO dao = new DAO();
-        
         try {
             
-            if(tbHistorico.getSelectedRow() > -1){
+            String id = (String)dtm.getValueAt(tbHistorico.getSelectedRow(), 0);
+            int realId = Integer.parseInt(id);
+            Usuario usuario = new Usuario(realId, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2,
+                    null, null, null, null, null, null, null, null, null, null, null, null, 0);
+            DAO dao = new DAO();
+        
+            try {
             
                 EditarCadastro editarCadastro = new EditarCadastro();
                 editarCadastro.setVisible(true);
@@ -494,22 +533,32 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                 editarCadastro.txtArqEmp.setText(usuario.getArq());
                 editarCadastro.txtArqEmp.setText(usuario.getArq());
                 editarCadastro.txtId.setText(String.valueOf(usuario.getId()));
+                editarCadastro.txtAprovado.setSelectedIndex(usuario.getAprovado());
                 dispose();
-        
-            } else {
-                
-                JOptionPane.showMessageDialog(null, "Selecione um usuário para a edição!");
+                    
+            } catch (Exception e){
+            
+                JOptionPane.showMessageDialog(null, "Problemas técnicos!");
+                e.printStackTrace();
             
             }
             
         } catch (Exception e){
             
-                JOptionPane.showMessageDialog(null, "Problemas técnicos!");
+                JOptionPane.showMessageDialog(null, "Selecione um usuário para a edição!");
                 e.printStackTrace();
             
         }
         
     }//GEN-LAST:event_bteditarActionPerformed
+
+    private void txtAprovadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAprovadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAprovadoActionPerformed
+
+    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -566,12 +615,14 @@ public class HistoricoCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel t4;
     private javax.swing.JLabel t5;
     private javax.swing.JLabel t6;
+    private javax.swing.JLabel t7;
     private javax.swing.JTable tbHistorico;
     private javax.swing.JLabel text;
     private javax.swing.JLabel text1;
+    private javax.swing.JComboBox<String> txtAprovado;
     private javax.swing.JTextField txtCnpjEmp;
     private javax.swing.JTextField txtCpf;
-    private javax.swing.JTextField txtData;
+    private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
