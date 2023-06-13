@@ -1,0 +1,10 @@
+- O projeto está usando a versão 8.0.33 do MySQL Connector.
+
+- Para conexão com o banco a senha está como "123456", talvez seja
+necessário alterá-la.
+
+- Alguns campos de cadastro de usuário tem limites de caracteres,
+por exemplo o campo "estado" que aceita apenas 2 caracteres
+(sigla do estado). Dá para verificar o limite no arquivo MySQL.
+
+- A build do projeto está na pasta dist.
