@@ -5,6 +5,7 @@
 package app;
 
 import DAO.DAO;
+import Usuario.Empresa;
 import Usuario.Usuario;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -23,8 +24,6 @@ public class NovoCadastro extends javax.swing.JFrame {
     public NovoCadastro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
-        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -47,7 +46,7 @@ public class NovoCadastro extends javax.swing.JFrame {
         btHistorico1 = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         t2 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
@@ -79,7 +78,6 @@ public class NovoCadastro extends javax.swing.JFrame {
         txtCelCom = new javax.swing.JTextField();
         t20 = new javax.swing.JLabel();
         txtData = new javax.swing.JFormattedTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
         t21 = new javax.swing.JLabel();
         txtEmailEmp = new javax.swing.JTextField();
@@ -357,7 +355,7 @@ public class NovoCadastro extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(t13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTelCom, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                                .addComponent(txtTelCom, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(t18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -460,7 +458,7 @@ public class NovoCadastro extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setViewportView(jPanel4);
+        jTabbedPane1.addTab("Dados do Empreendedor", jPanel4);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados da Empresa:"));
 
@@ -565,9 +563,9 @@ public class NovoCadastro extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtArqEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtArqEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btArquivos)
+                .addComponent(btArquivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -639,7 +637,7 @@ public class NovoCadastro extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(t25)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCnpjEmp))))
+                                .addComponent(txtCnpjEmp, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -685,7 +683,7 @@ public class NovoCadastro extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jScrollPane2.setViewportView(jPanel6);
+        jTabbedPane1.addTab("Dados da Empresa", jPanel6);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -697,36 +695,37 @@ public class NovoCadastro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btHistorico1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(314, 314, 314)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btHistorico1)
+                                .addGap(18, 18, 18)
+                                .addComponent(btMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btHistorico1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -751,122 +750,12 @@ public class NovoCadastro extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfActionPerformed
-
-    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoActionPerformed
-
-    private void txtTelComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelComActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelComActionPerformed
-
-    private void txtCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCnpjActionPerformed
-
-    private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnderecoActionPerformed
-
-    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroActionPerformed
-
-    private void txtCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCepActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCepActionPerformed
-
-    private void txtCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCidadeActionPerformed
-
-    private void txtCelComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelComActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelComActionPerformed
-
     private void btHistorico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHistorico1ActionPerformed
         // TODO add your handling code here:
         HistoricoCadastro historico = new HistoricoCadastro();
         historico.setVisible(true);
         dispose();
     }//GEN-LAST:event_btHistorico1ActionPerformed
-
-    private void txtEmailEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailEmpActionPerformed
-
-    private void txtNomeEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeEmpActionPerformed
-
-    private void txtEstadoEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstadoEmpActionPerformed
-
-    private void txtTelEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelEmpActionPerformed
-
-    private void txtCnpjEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCnpjEmpActionPerformed
-
-    private void txtEnderecoEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnderecoEmpActionPerformed
-
-    private void txtCepEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCepEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCepEmpActionPerformed
-
-    private void txtCidadeEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCidadeEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCidadeEmpActionPerformed
-
-    private void txtBairroEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroEmpActionPerformed
-
-    private void txtArqEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtArqEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtArqEmpActionPerformed
-
-    private void btArquivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btArquivosActionPerformed
-        // TODO add your handling code here:
-        JFileChooser fileChooser;
-        fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Procarar arquivos");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        
-        FileNameExtensionFilter filter = new FileNameExtensionFilter ("Imagem" , "jpg", "png", "pdf");
-        
-        fileChooser.setFileFilter(filter);
-        int retorno = fileChooser.showOpenDialog(this);
-        
-        if (retorno == JFileChooser.APPROVE_OPTION){
-            
-           File file = fileChooser.getSelectedFile();
-           txtArqEmp.setText(file.getPath());
-            
-        }
-        
-        
-    }//GEN-LAST:event_btArquivosActionPerformed
-
-    private void txtCelEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelEmpActionPerformed
 
     private void btMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuActionPerformed
         // TODO add your handling code here:
@@ -924,11 +813,13 @@ public class NovoCadastro extends javax.swing.JFrame {
             
             try{
             
-                Usuario usuario = new Usuario(0, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario,
-                nomeEmp, emailEmp, cnpjEmp, enderecoEmp, bairroEmp, cidadeEmp, estadoEmp, cepEmp, telComEmp, celComEmp, compleEmp, arqEmp, 1);
+                Usuario usuario = new Usuario(0, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, 1);
+                Empresa empresa = new Empresa(0, nomeEmp, emailEmp, cnpjEmp, enderecoEmp, bairroEmp, cidadeEmp, estadoEmp, cepEmp, telComEmp, celComEmp, compleEmp, arqEmp);
                 DAO dao = new DAO();
 
                 dao.cadastrarUsuario(usuario);
+                dao.cadastrarEmpresa(empresa);
+                dao.cadastrarIdEmpresa(usuario);
                 JOptionPane.showMessageDialog(null, "Cliente cadastrado!");
                 btExcluirActionPerformed(evt);
             
@@ -943,18 +834,6 @@ public class NovoCadastro extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btSalvarActionPerformed
-
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
-
-    private void txtTelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelResActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelResActionPerformed
-
-    private void txtCelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelResActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelResActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
@@ -986,6 +865,127 @@ public class NovoCadastro extends javax.swing.JFrame {
         txtTelEmp.setText("");
         txtTelRes.setText("");
     }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void txtCelEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCelEmpActionPerformed
+
+    private void btArquivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btArquivosActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser;
+        fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Procarar arquivos");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter ("Imagem" , "jpg", "png", "pdf");
+
+        fileChooser.setFileFilter(filter);
+        int retorno = fileChooser.showOpenDialog(this);
+
+        if (retorno == JFileChooser.APPROVE_OPTION){
+
+            File file = fileChooser.getSelectedFile();
+            txtArqEmp.setText(file.getPath());
+
+        }
+
+    }//GEN-LAST:event_btArquivosActionPerformed
+
+    private void txtArqEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtArqEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtArqEmpActionPerformed
+
+    private void txtBairroEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBairroEmpActionPerformed
+
+    private void txtCidadeEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCidadeEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCidadeEmpActionPerformed
+
+    private void txtCepEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCepEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCepEmpActionPerformed
+
+    private void txtEnderecoEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnderecoEmpActionPerformed
+
+    private void txtCnpjEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCnpjEmpActionPerformed
+
+    private void txtTelEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelEmpActionPerformed
+
+    private void txtEstadoEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstadoEmpActionPerformed
+
+    private void txtNomeEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeEmpActionPerformed
+
+    private void txtEmailEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailEmpActionPerformed
+
+    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataActionPerformed
+
+    private void txtCelComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelComActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCelComActionPerformed
+
+    private void txtCelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCelResActionPerformed
+
+    private void txtCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCidadeActionPerformed
+
+    private void txtCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCepActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCepActionPerformed
+
+    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBairroActionPerformed
+
+    private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnderecoActionPerformed
+
+    private void txtCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCnpjActionPerformed
+
+    private void txtTelComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelComActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelComActionPerformed
+
+    private void txtTelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelResActionPerformed
+
+    private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstadoActionPerformed
+
+    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCpfActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1043,8 +1043,7 @@ public class NovoCadastro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel t12;
     private javax.swing.JLabel t13;
     private javax.swing.JLabel t14;

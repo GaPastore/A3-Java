@@ -4,6 +4,10 @@
  */
 package app;
 
+import DAO.DAO;
+import Usuario.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Felipe
@@ -31,15 +35,15 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txt_novoLogin2 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txt_repetirNovaSenha1 = new javax.swing.JTextField();
+        txtConfSenha = new javax.swing.JTextField();
         btCancelarEsqueci1 = new javax.swing.JButton();
         btEnviarEsqueci1 = new javax.swing.JButton();
-        txt_novaSenha2 = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        txt_novoEmail1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -56,24 +60,24 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel13.setText("Digite a nova senha:");
 
-        txt_novoLogin2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        txt_novoLogin2.setForeground(new java.awt.Color(153, 153, 153));
-        txt_novoLogin2.setText("Usuário");
-        txt_novoLogin2.addActionListener(new java.awt.event.ActionListener() {
+        txtNome.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        txtNome.setForeground(new java.awt.Color(153, 153, 153));
+        txtNome.setText("Usuário");
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_novoLogin2ActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
 
         jLabel14.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel14.setText("Repetir a nova senha:");
 
-        txt_repetirNovaSenha1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        txt_repetirNovaSenha1.setForeground(new java.awt.Color(153, 153, 153));
-        txt_repetirNovaSenha1.setText("Nova senha novamente");
-        txt_repetirNovaSenha1.addActionListener(new java.awt.event.ActionListener() {
+        txtConfSenha.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        txtConfSenha.setForeground(new java.awt.Color(153, 153, 153));
+        txtConfSenha.setText("Nova senha novamente");
+        txtConfSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_repetirNovaSenha1ActionPerformed(evt);
+                txtConfSenhaActionPerformed(evt);
             }
         });
 
@@ -95,12 +99,12 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
             }
         });
 
-        txt_novaSenha2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        txt_novaSenha2.setForeground(new java.awt.Color(153, 153, 153));
-        txt_novaSenha2.setText("Nova senha");
-        txt_novaSenha2.addActionListener(new java.awt.event.ActionListener() {
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        txtSenha.setForeground(new java.awt.Color(153, 153, 153));
+        txtSenha.setText("Nova senha");
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_novaSenha2ActionPerformed(evt);
+                txtSenhaActionPerformed(evt);
             }
         });
 
@@ -110,12 +114,12 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
         jLabel16.setText("Sem problemas! Siga os passos:");
 
-        txt_novoEmail1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        txt_novoEmail1.setForeground(new java.awt.Color(153, 153, 153));
-        txt_novoEmail1.setText("Novo e-mail");
-        txt_novoEmail1.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(153, 153, 153));
+        txtEmail.setText("Novo e-mail");
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_novoEmail1ActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
 
@@ -130,24 +134,24 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_novoEmail1)
+                        .addComponent(txtEmail)
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txt_novaSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_repetirNovaSenha1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtConfSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(btEnviarEsqueci1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btCancelarEsqueci1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_novoLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,24 +163,24 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_novoEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_novoLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_novaSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_repetirNovaSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(txtConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCancelarEsqueci1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btEnviarEsqueci1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -241,13 +245,13 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_novoLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_novoLogin2ActionPerformed
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_novoLogin2ActionPerformed
+    }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void txt_repetirNovaSenha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_repetirNovaSenha1ActionPerformed
+    private void txtConfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_repetirNovaSenha1ActionPerformed
+    }//GEN-LAST:event_txtConfSenhaActionPerformed
 
     private void btCancelarEsqueci1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarEsqueci1ActionPerformed
         Login login = new Login();
@@ -258,15 +262,46 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
 
     private void btEnviarEsqueci1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarEsqueci1ActionPerformed
         // TODO add your handling code here:
+        String nome = txtNome.getText();
+        String email = txtEmail.getText();
+        String senha = txtSenha.getText();
+        String confSenha = txtConfSenha.getText();
+        
+        if(senha.matches(confSenha)){
+            
+            try{
+            
+                Usuario usuario = new Usuario(null, null, nome, email, senha, null, null, null, null, null, null, null, null, null, null, null, null, "1", null);
+                DAO dao = new DAO();
+
+                dao.alterarSenha(usuario);
+                MenuPrincipal menu = new MenuPrincipal();
+                menu.setVisible(true);
+                dispose();
+            
+            }
+            catch (Exception e){
+            
+                JOptionPane.showMessageDialog(null, "Problemas técnicos!");
+                e.printStackTrace();
+            
+            }
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "ERRO! Senhas diferentes!");
+            
+        }
+        
     }//GEN-LAST:event_btEnviarEsqueci1ActionPerformed
 
-    private void txt_novaSenha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_novaSenha2ActionPerformed
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_novaSenha2ActionPerformed
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
-    private void txt_novoEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_novoEmail1ActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_novoEmail1ActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,9 +360,9 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField txt_novaSenha2;
-    private javax.swing.JTextField txt_novoEmail1;
-    private javax.swing.JTextField txt_novoLogin2;
-    private javax.swing.JTextField txt_repetirNovaSenha1;
+    private javax.swing.JTextField txtConfSenha;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

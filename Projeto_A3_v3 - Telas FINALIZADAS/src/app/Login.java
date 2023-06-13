@@ -148,24 +148,24 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(91, 91, 91)
                 .addComponent(btEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCadastrar)
                     .addComponent(txtESenha))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 0, 438, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 0, 438, 590));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(450, 500));
@@ -198,7 +198,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(45, 45, 45))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
 
         pack();
         setLocationRelativeTo(null);
@@ -221,8 +221,7 @@ public class Login extends javax.swing.JFrame {
         
         try{
             
-            Usuario usuario = new Usuario(0, null, null, email, senha, null, null, null, null, null, null, null, null, null, null, null, null, 1
-            , null, null, null, null, null, null, null, null, null, null, null, null, 0);
+            Usuario usuario = new Usuario(0, null, null, email, senha, null, null, null, null, null, null, null, null, null, null, null, null, 1, 0);
             DAO dao = new DAO();
 
             if (dao.existeUsuario(usuario)){

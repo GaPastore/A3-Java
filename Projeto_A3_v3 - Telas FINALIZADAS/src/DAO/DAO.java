@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import Usuario.Empresa;
 import Usuario.Usuario;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -38,7 +39,7 @@ public class DAO {
         
     }
     
-    public void apontaUsuario(Usuario objUsuario, String id) throws Exception{
+    public void apontaUsuario(Usuario objUsuario, Empresa objEmpresa, String id) throws Exception{
         
         String sql = "select * from tb_usuario where tipo_usuario = 2 and id = ?";
         
@@ -50,35 +51,35 @@ public class DAO {
                 
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                    objUsuario.setId(rs.getInt("id"));
+                    objUsuario.setId(rs.getString("id"));
                     objUsuario.setNewData(rs.getString("new_data"));
                     objUsuario.setNome(rs.getString("nome"));
-                    objUsuario.setNomeEmp(rs.getString("nome_emp"));
+                    objEmpresa.setNomeEmp(rs.getString("nome_emp"));
                     objUsuario.setEmail(rs.getString("email"));
                     objUsuario.setEndereco(rs.getString("endereco"));
-                    objUsuario.setEnderecoEmp(rs.getString("endereco_emp"));
+                    objEmpresa.setEnderecoEmp(rs.getString("endereco_emp"));
                     objUsuario.setCpf(rs.getString("cpf"));
                     objUsuario.setCnpj(rs.getString("cnpj"));
                     objUsuario.setBairro(rs.getString("bairro"));
-                    objUsuario.setBairroEmp(rs.getString("bairro_emp"));
+                    objEmpresa.setBairroEmp(rs.getString("bairro_emp"));
                     objUsuario.setCelCome(rs.getString("cel_come"));
                     objUsuario.setCelResi(rs.getString("cel_resi"));
-                    objUsuario.setCelEmp(rs.getString("cel_emp"));
+                    objEmpresa.setCelEmp(rs.getString("cel_emp"));
                     objUsuario.setCep(rs.getString("cep"));
-                    objUsuario.setCepEmp(rs.getString("cep_emp"));
+                    objEmpresa.setCepEmp(rs.getString("cep_emp"));
                     objUsuario.setCidade(rs.getString("cidade_emp"));
-                    objUsuario.setCidadeEmp(rs.getString("cidade"));
-                    objUsuario.setCnpjEmp(rs.getString("cnpj_emp"));
+                    objEmpresa.setCidadeEmp(rs.getString("cidade"));
+                    objEmpresa.setCnpjEmp(rs.getString("cnpj_emp"));
                     objUsuario.setComple(rs.getString("comple"));
-                    objUsuario.setCompleEmp(rs.getString("comp_emp"));
-                    objUsuario.setEmailEmp(rs.getString("email_emp"));
-                    objUsuario.setTelEmp(rs.getString("tel_emp"));
+                    objEmpresa.setCompleEmp(rs.getString("comp_emp"));
+                    objEmpresa.setEmailEmp(rs.getString("email_emp"));
+                    objEmpresa.setTelEmp(rs.getString("tel_emp"));
                     objUsuario.setTelResi(rs.getString("tel_resi"));
                     objUsuario.setTelCome(rs.getString("tel_come"));
-                    objUsuario.setEstadoEmp(rs.getString("estado_emp"));
+                    objEmpresa.setEstadoEmp(rs.getString("estado_emp"));
                     objUsuario.setEstado(rs.getString("estado"));
-                    objUsuario.setArq(rs.getString("arq_emp"));
-                    objUsuario.setAprovado(rs.getInt("aprovado"));
+                    objEmpresa.setArq(rs.getString("arq_emp"));
+                    objUsuario.setAprovado(rs.getString("aprovado"));
                 }
                 
                 
@@ -97,9 +98,7 @@ public class DAO {
         
         String sql = "update tb_usuario set new_data = ?, nome = ?, email = ?, senha = ?, endereco = ?, cpf = ?, "
                 + "cnpj = ?, bairro = ?, cidade = ?, estado = ?, cep = ?, tel_resi = ?, cel_resi = ?, "
-                + "tel_come = ?, cel_come = ?, comple = ?, tipo_usuario = ?, bairro_emp = ?, cidade_emp = ?, "
-                + "endereco_emp = ?, email_emp = ?, estado_emp = ?, cep_emp = ?, cnpj_emp = ?, tel_emp = ?, "
-                + "cel_emp = ?, nome_emp = ?, comp_emp = ?, arq_emp = ?, aprovado = ? where id = ?";
+                + "tel_come = ?, cel_come = ?, comple = ?, tipo_usuario = ?, aprovado = ? where id = ?";
         
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -119,21 +118,9 @@ public class DAO {
             ps.setString(14, objUsuario.getCelResi());
             ps.setString(15, objUsuario.getCelCome());
             ps.setString(16, objUsuario.getComple());
-            ps.setInt(17, objUsuario.getTipoUsuario());
-            ps.setString(18, objUsuario.getBairroEmp());
-            ps.setString(19, objUsuario.getCidadeEmp());
-            ps.setString(20, objUsuario.getEnderecoEmp());
-            ps.setString(21, objUsuario.getEmailEmp());
-            ps.setString(22, objUsuario.getEstadoEmp());
-            ps.setString(23, objUsuario.getCepEmp());
-            ps.setString(24, objUsuario.getCnpjEmp());
-            ps.setString(25, objUsuario.getTelEmp());
-            ps.setString(26, objUsuario.getCelEmp());
-            ps.setString(27, objUsuario.getNomeEmp());
-            ps.setString(28, objUsuario.getCompleEmp());
-            ps.setString(29, objUsuario.getArq());
-            ps.setInt(30, objUsuario.getAprovado());
-            ps.setInt(31, objUsuario.getId());
+            ps.setString(17, objUsuario.getTipoUsuario());
+            ps.setString(30, objUsuario.getAprovado());
+            ps.setString(31, objUsuario.getId());
             
             try {
                 
@@ -149,13 +136,95 @@ public class DAO {
         
     }
     
+    public void alterarSenha(Usuario objUsuario) throws Exception{
+        
+        String sql = "update tb_usuario set senha = ? where nome = ? and email = ?";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
+            
+            ps.setString(1, objUsuario.getSenha());
+            ps.setString(2, objUsuario.getNome());
+            ps.setString(3, objUsuario.getEmail());
+            
+            try {
+                
+                int rs = ps.executeUpdate();
+                
+            } catch (Exception e){
+                
+                e.printStackTrace();
+            
+            }
+            
+        }
+        
+    }
+    
+    public void alterarEmpresa(Empresa objEmpresa, Usuario objUsuario) throws Exception{
+
+        String sql = "update tb_usuario set bairro_emp = ?, cidade_emp = ?, endereco_emp = ?, email_emp = ?, estado_emp = ?, "
+                + "cep_emp = ?, cnpj_emp = ?, tel_emp = ?, cel_emp = ?, nome_emp = ?, comple_emp = ?, arq_emp = ?"
+                + " where id_usuario = ?";
+         
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
+            
+            ps.setString(1, objEmpresa.getBairroEmp());
+            ps.setString(2, objEmpresa.getCidadeEmp());
+            ps.setString(3, objEmpresa.getEnderecoEmp());
+            ps.setString(4, objEmpresa.getEmailEmp());
+            ps.setString(5, objEmpresa.getEstadoEmp());
+            ps.setString(6, objEmpresa.getCepEmp());
+            ps.setString(7, objEmpresa.getCnpjEmp());
+            ps.setString(8, objEmpresa.getTelEmp());
+            ps.setString(9, objEmpresa.getCelEmp());
+            ps.setString(10, objEmpresa.getNomeEmp());
+            ps.setString(11, objEmpresa.getCompleEmp());
+            ps.setString(12, objUsuario.getId());
+            
+            
+            try {
+                
+                int rs = ps.executeUpdate();
+                
+            } catch (Exception e){
+                
+                e.printStackTrace();
+            
+            }
+            
+        } 
+        
+    }
+    
     public void excluirUsuario(Usuario objUsuario) throws Exception{
         
         String sql = "delete from tb_usuario where id = ?";
         
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
-            ps.setInt(1, objUsuario.getId());
+            ps.setString(1, objUsuario.getId());
+            
+            try {
+                
+                int rs = ps.executeUpdate();
+                
+            } catch (Exception e){
+                
+                e.printStackTrace();
+            
+            }
+            
+        }
+        
+    }
+    
+    public void excluirEmpresa(Usuario objUsuario) throws Exception{
+        
+        String sql = "delete from tb_empresa where id_usario = ?";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
+            
+            ps.setString(1, objUsuario.getId());
             
             try {
                 
@@ -173,9 +242,8 @@ public class DAO {
     
     public void cadastrarUsuario(Usuario objUsuario) throws Exception{
 
-        String sql = "insert into tb_usuario (new_data, nome, email, senha, endereco, cpf, cnpj, bairro, cidade, estado, cep, tel_resi, cel_resi, tel_come, cel_come, comple, tipo_usuario, "
-                + "bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp, aprovado) " 
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into tb_usuario (new_data, nome, email, senha, endereco, cpf, cnpj, bairro, cidade, estado, cep, tel_resi, cel_resi, tel_come, cel_come, comple, tipo_usuario, aprovado) " 
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -195,20 +263,8 @@ public class DAO {
             ps.setString(14, objUsuario.getCelResi());
             ps.setString(15, objUsuario.getCelCome());
             ps.setString(16, objUsuario.getComple());
-            ps.setInt(17, objUsuario.getTipoUsuario());
-            ps.setString(18, objUsuario.getBairroEmp());
-            ps.setString(19, objUsuario.getCidadeEmp());
-            ps.setString(20, objUsuario.getEnderecoEmp());
-            ps.setString(21, objUsuario.getEmailEmp());
-            ps.setString(22, objUsuario.getEstadoEmp());
-            ps.setString(23, objUsuario.getCepEmp());
-            ps.setString(24, objUsuario.getCnpjEmp());
-            ps.setString(25, objUsuario.getTelEmp());
-            ps.setString(26, objUsuario.getCelEmp());
-            ps.setString(27, objUsuario.getNomeEmp());
-            ps.setString(28, objUsuario.getCompleEmp());
-            ps.setString(29, objUsuario.getArq());
-            ps.setInt(30, objUsuario.getAprovado());
+            ps.setString(17, objUsuario.getTipoUsuario());
+            ps.setString(18, objUsuario.getAprovado());
             
             
             try {
@@ -225,7 +281,66 @@ public class DAO {
         
     }
     
-    public void consultaUsuario(Usuario objUsuario, JTable table, String txtSql) throws Exception{
+    public void cadastrarEmpresa(Empresa objEmpresa) throws Exception{
+
+        String sql = "insert into tb_empresa (bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp) " 
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+         
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
+            
+            ps.setString(1, objEmpresa.getBairroEmp());
+            ps.setString(2, objEmpresa.getCidadeEmp());
+            ps.setString(3, objEmpresa.getEnderecoEmp());
+            ps.setString(4, objEmpresa.getEmailEmp());
+            ps.setString(5, objEmpresa.getEstadoEmp());
+            ps.setString(6, objEmpresa.getCepEmp());
+            ps.setString(7, objEmpresa.getCnpjEmp());
+            ps.setString(8, objEmpresa.getTelEmp());
+            ps.setString(9, objEmpresa.getCelEmp());
+            ps.setString(10, objEmpresa.getNomeEmp());
+            ps.setString(11, objEmpresa.getCompleEmp());
+            ps.setString(12, objEmpresa.getArq());
+            
+            
+            try {
+                
+                int rs = ps.executeUpdate();
+                
+            } catch (Exception e){
+                
+                e.printStackTrace();
+            
+            }
+            
+        } 
+        
+    }
+    
+    public void cadastrarIdEmpresa(Usuario objUsuario) throws Exception{
+
+        String sql = "insert into tb_empresa (id_usuario) " 
+                + "select id from tb_usuario where nome = ?";
+         
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
+            
+            ps.setString(1, objUsuario.getNome());
+            
+            
+            try {
+                
+                int rs = ps.executeUpdate();
+                
+            } catch (Exception e){
+                
+                e.printStackTrace();
+            
+            }
+            
+        } 
+        
+    }
+    
+    public void consultaUsuario(JTable table, String txtSql) throws Exception{
         
         String sql = txtSql;
         
@@ -251,11 +366,11 @@ public class DAO {
                table.setValueAt(rs.getString("email"), i, 3);
                table.setValueAt(rs.getString("cep"), i, 4);
                table.setValueAt(rs.getString("cnpj_emp"), i, 5);
-               if(rs.getInt("aprovado") == 1){
+               if(rs.getString("aprovado") == "1"){
                    table.setValueAt("Em Análise", i, 6);
-               } else if(rs.getInt("aprovado") == 2){
+               } else if(rs.getString("aprovado") == "2"){
                    table.setValueAt("Negado", i, 6);
-               } else if(rs.getInt("aprovado") == 3){
+               } else if(rs.getString("aprovado") == "3"){
                    table.setValueAt("Aprovado", i, 6);
                }
                i++;
@@ -264,5 +379,5 @@ public class DAO {
         }
         
     }
-    
+        
 }

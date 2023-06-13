@@ -5,6 +5,7 @@
 package app;
 
 import DAO.DAO;
+import Usuario.Empresa;
 import Usuario.Usuario;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -183,7 +184,6 @@ public class HistoricoCadastro extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtData.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtData.setText("  /  /    ");
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDataActionPerformed(evt);
@@ -214,9 +214,9 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                         .addComponent(t7)
                         .addGap(18, 18, 18)
                         .addComponent(txtAprovado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(t3)
@@ -236,9 +236,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                                 .addComponent(t5)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(btFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
@@ -345,7 +343,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
+                .addContainerGap(258, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(260, 260, 260))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -369,12 +367,12 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bteditar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -441,41 +439,40 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         String cnpjEmp = txtCnpjEmp.getText();
         int aprovado = txtAprovado.getSelectedIndex();
         
-        
-        Usuario usuario = new Usuario(0, data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, 2,
-        nomeEmp, null, cnpjEmp, null, null, null, null, null, null, null, null, null, 0);
-        DAO dao = new DAO();
-        
-        String txtSqlUser = "select * from tb_usuario where tipo_usuario = 2 ";
+        String txtSqlUser = "select * from tb_empresa as t inner join tb_usuario as t2 on t2.id = t.id_usuario where t2.tipo_usuario = 2 ";
         
         if(!data.matches("  /  /    ")){
-            txtSqlUser = txtSqlUser + " and new_data = '" + data + "'";
+            txtSqlUser = txtSqlUser + " and t2.new_data = '" + data + "'";
         }
         if(!id.matches("")){
-            txtSqlUser = txtSqlUser + " and id = '" + id + "'";
+            txtSqlUser = txtSqlUser + " and t2.id = '" + id + "'";
         }
         if(!nome.matches("")){
-            txtSqlUser = txtSqlUser + " and nome = '" + nome + "'";
+            txtSqlUser = txtSqlUser + " and t2.nome = '" + nome + "'";
         }
         if(!email.matches("")){
-            txtSqlUser = txtSqlUser + " and email = '" + email + "'";
+            txtSqlUser = txtSqlUser + " and t2.email = '" + email + "'";
         }
         if(!cpf.matches("")){
-            txtSqlUser = txtSqlUser + " and cpf = '" + cpf + "'";
+            txtSqlUser = txtSqlUser + " and t2.cpf = '" + cpf + "'";
         }
         if(!nomeEmp.matches("")){
-            txtSqlUser = txtSqlUser + " and nome_emp = '" + nomeEmp + "'";
+            txtSqlUser = txtSqlUser + " and t.nome_emp = '" + nomeEmp + "'";
         }
         if(!cnpjEmp.matches("")){
-            txtSqlUser = txtSqlUser + " and cnpj_emp = '" + cnpjEmp + "'";
+            txtSqlUser = txtSqlUser + " and t.cnpj_emp = '" + cnpjEmp + "'";
         }
         if(aprovado != 0){
-            txtSqlUser = txtSqlUser + " and aprovado = " + aprovado;
+            txtSqlUser = txtSqlUser + " and t2.aprovado = " + aprovado;
         }
         
         try {
-        
-            dao.consultaUsuario(usuario, tbHistorico, txtSqlUser);
+            
+            Usuario usuario = new Usuario(id, data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, "2", null);
+            Empresa empresa = new Empresa(id, nomeEmp, null, null, null, null, null, null, null, null, null, null, null);
+            DAO dao = new DAO();
+            
+            dao.consultaUsuario(tbHistorico, txtSqlUser);
         
         } catch (Exception e){
             
@@ -493,45 +490,45 @@ public class HistoricoCadastro extends javax.swing.JFrame {
             
             String id = (String)dtm.getValueAt(tbHistorico.getSelectedRow(), 0);
             int realId = Integer.parseInt(id);
-            Usuario usuario = new Usuario(realId, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2,
-                    null, null, null, null, null, null, null, null, null, null, null, null, 0);
+            Usuario usuario = new Usuario(realId, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 0);
+            Empresa empresa = new Empresa(realId, null, null, null, null, null, null, null, null, null, null, null, null);
             DAO dao = new DAO();
         
             try {
             
                 EditarCadastro editarCadastro = new EditarCadastro();
                 editarCadastro.setVisible(true);
-                dao.apontaUsuario(usuario, id);
+                dao.apontaUsuario(usuario, empresa, id);
                 editarCadastro.txtNome.setText(usuario.getNome());
                 editarCadastro.txtData.setText(usuario.getNewData());
                 editarCadastro.txtEmail.setText(usuario.getEmail());
                 editarCadastro.txtCpf.setText(usuario.getCpf());
-                editarCadastro.txtCepEmp.setText(usuario.getCepEmp());
+                editarCadastro.txtCepEmp.setText(empresa.getCepEmp());
                 editarCadastro.txtCep.setText(usuario.getCep());
-                editarCadastro.txtCidadeEmp.setText(usuario.getCidadeEmp());
+                editarCadastro.txtCidadeEmp.setText(empresa.getCidadeEmp());
                 editarCadastro.txtCidade.setText(usuario.getCidade());
                 editarCadastro.txtBairro.setText(usuario.getBairro());
-                editarCadastro.txtBairroEmp.setText(usuario.getBairroEmp());
+                editarCadastro.txtBairroEmp.setText(empresa.getBairroEmp());
                 editarCadastro.txtCnpj.setText(usuario.getCnpj());
                 editarCadastro.txtTelCom.setText(usuario.getTelCome());
                 editarCadastro.txtTelRes.setText(usuario.getTelResi());
-                editarCadastro.txtTelEmp.setText(usuario.getTelEmp());
+                editarCadastro.txtTelEmp.setText(empresa.getTelEmp());
                 editarCadastro.txtCelCom.setText(usuario.getCelCome());
                 editarCadastro.txtCelRes.setText(usuario.getCelResi());
-                editarCadastro.txtCelEmp.setText(usuario.getCelEmp());
-                editarCadastro.txtArqEmp.setText(usuario.getArq());
-                editarCadastro.txtCnpjEmp.setText(usuario.getCnpjEmp());
-                editarCadastro.txtNomeEmp.setText(usuario.getNomeEmp());
+                editarCadastro.txtCelEmp.setText(empresa.getCelEmp());
+                editarCadastro.txtArqEmp.setText(empresa.getArq());
+                editarCadastro.txtCnpjEmp.setText(empresa.getCnpjEmp());
+                editarCadastro.txtNomeEmp.setText(empresa.getNomeEmp());
                 editarCadastro.txtComple.setText(usuario.getComple());
                 editarCadastro.txtEndereco.setText(usuario.getEndereco());
-                editarCadastro.txtEnderecoEmp.setText(usuario.getEnderecoEmp());
+                editarCadastro.txtEnderecoEmp.setText(empresa.getEnderecoEmp());
                 editarCadastro.txtEstado.setText(usuario.getEstado());
                 editarCadastro.txtEstado.setText(usuario.getEstado());
-                editarCadastro.txtEstadoEmp.setText(usuario.getEstadoEmp());
-                editarCadastro.txtCompleEmp.setText(usuario.getCompleEmp());
-                editarCadastro.txtEmailEmp.setText(usuario.getEmailEmp());
-                editarCadastro.txtArqEmp.setText(usuario.getArq());
-                editarCadastro.txtArqEmp.setText(usuario.getArq());
+                editarCadastro.txtEstadoEmp.setText(empresa.getEstadoEmp());
+                editarCadastro.txtCompleEmp.setText(empresa.getCompleEmp());
+                editarCadastro.txtEmailEmp.setText(empresa.getEmailEmp());
+                editarCadastro.txtArqEmp.setText(empresa.getArq());
+                editarCadastro.txtArqEmp.setText(empresa.getArq());
                 editarCadastro.txtId.setText(String.valueOf(usuario.getId()));
                 editarCadastro.txtAprovado.setSelectedIndex(usuario.getAprovado());
                 dispose();

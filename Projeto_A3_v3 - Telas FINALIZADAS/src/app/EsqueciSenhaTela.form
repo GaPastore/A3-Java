@@ -71,15 +71,15 @@
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txt_novoEmail1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel17" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="txt_novaSenha2" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="txtSenha" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="jLabel14" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                  <Component id="txt_repetirNovaSenha1" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="txtConfSenha" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btEnviarEsqueci1" min="-2" pref="125" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -88,13 +88,13 @@
                               </Group>
                               <Component id="jLabel13" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="txt_novoLogin2" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="txtNome" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   <Component id="jLabel15" alignment="0" min="-2" pref="283" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel16" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <EmptySpace pref="62" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -108,25 +108,25 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_novoEmail1" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Component id="txtEmail" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_novoLogin2" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtNome" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_novaSenha2" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtSenha" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_repetirNovaSenha1" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtConfSenha" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btCancelarEsqueci1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btEnviarEsqueci1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -148,7 +148,7 @@
                 <Property name="text" type="java.lang.String" value="Digite a nova senha:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_novoLogin2">
+            <Component class="javax.swing.JTextField" name="txtNome">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="2"/>
@@ -159,7 +159,7 @@
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_novoLogin2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
@@ -170,7 +170,7 @@
                 <Property name="text" type="java.lang.String" value="Repetir a nova senha:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_repetirNovaSenha1">
+            <Component class="javax.swing.JTextField" name="txtConfSenha">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="2"/>
@@ -181,7 +181,7 @@
                 <Property name="text" type="java.lang.String" value="Nova senha novamente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_repetirNovaSenha1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtConfSenhaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btCancelarEsqueci1">
@@ -212,7 +212,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEnviarEsqueci1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_novaSenha2">
+            <Component class="javax.swing.JTextField" name="txtSenha">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="2"/>
@@ -223,7 +223,7 @@
                 <Property name="text" type="java.lang.String" value="Nova senha"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_novaSenha2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSenhaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
@@ -242,7 +242,7 @@
                 <Property name="text" type="java.lang.String" value="Sem problemas! Siga os passos:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_novoEmail1">
+            <Component class="javax.swing.JTextField" name="txtEmail">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="2"/>
@@ -253,7 +253,7 @@
                 <Property name="text" type="java.lang.String" value="Novo e-mail"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_novoEmail1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">

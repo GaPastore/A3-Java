@@ -49,7 +49,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="btNovoCadas" min="-2" pref="222" max="-2" attributes="0"/>
-                  <EmptySpace pref="74" max="32767" attributes="0"/>
+                  <EmptySpace pref="69" max="32767" attributes="0"/>
                   <Component id="btHistCadas" min="-2" pref="231" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Component id="btSuporte" min="-2" pref="231" max="-2" attributes="0"/>
@@ -57,7 +57,7 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="885" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="875" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -66,13 +66,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="300" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btNovoCadas" alignment="1" pref="35" max="32767" attributes="0"/>
-                      <Component id="btSuporte" pref="35" max="32767" attributes="0"/>
-                      <Component id="btHistCadas" alignment="1" max="32767" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btHistCadas" alignment="1" pref="53" max="32767" attributes="0"/>
+                      <Component id="btNovoCadas" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btSuporte" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
