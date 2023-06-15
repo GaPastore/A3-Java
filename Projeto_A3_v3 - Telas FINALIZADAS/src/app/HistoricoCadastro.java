@@ -430,7 +430,7 @@ public class HistoricoCadastro extends javax.swing.JFrame {
 
     private void btFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrarActionPerformed
         // TODO add your handling code here:
-        String id = txtId.getText();
+        String idCli = txtId.getText();
         String email = txtEmail.getText();
         String nome = txtNome.getText();
         String cpf = txtCpf.getText();
@@ -439,13 +439,13 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         String cnpjEmp = txtCnpjEmp.getText();
         int aprovado = txtAprovado.getSelectedIndex();
         
-        String txtSqlUser = "select * from tb_empresa as t inner join tb_usuario as t2 on t2.id = t.id_usuario where t2.tipo_usuario = 2 ";
+        String txtSqlUser = "select * from tb_empresa as t inner join tb_usuario as t2 on t2.id = t.id_usuario where t2.tipo_usuario = 2";
         
         if(!data.matches("  /  /    ")){
             txtSqlUser = txtSqlUser + " and t2.new_data = '" + data + "'";
         }
-        if(!id.matches("")){
-            txtSqlUser = txtSqlUser + " and t2.id = '" + id + "'";
+        if(!idCli.matches("")){
+            txtSqlUser = txtSqlUser + " and t2.id = '" + idCli + "'";
         }
         if(!nome.matches("")){
             txtSqlUser = txtSqlUser + " and t2.nome = '" + nome + "'";
@@ -468,8 +468,8 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         
         try {
             
-            Usuario usuario = new Usuario(id, data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, "2", null);
-            Empresa empresa = new Empresa(id, nomeEmp, null, null, null, null, null, null, null, null, null, null, null);
+            Usuario usuario = new Usuario(idCli, data, nome, email, null, null, cpf, null, null, null, null, null, null, null, null, null, null, "2", null);
+            Empresa empresa = new Empresa(null, idCli, nomeEmp, null, null, null, null, null, null, null, null, null, null, null);
             DAO dao = new DAO();
             
             dao.consultaUsuario(tbHistorico, txtSqlUser);
@@ -488,17 +488,17 @@ public class HistoricoCadastro extends javax.swing.JFrame {
         
         try {
             
-            String id = (String)dtm.getValueAt(tbHistorico.getSelectedRow(), 0);
-            int realId = Integer.parseInt(id);
-            Usuario usuario = new Usuario(realId, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 0);
-            Empresa empresa = new Empresa(realId, null, null, null, null, null, null, null, null, null, null, null, null);
+            String idCli = (String)dtm.getValueAt(tbHistorico.getSelectedRow(), 0);
+            String nomeEmp = (String)dtm.getValueAt(tbHistorico.getSelectedRow(), 2);
+            Usuario usuario = new Usuario(idCli, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "2", "0");
+            Empresa empresa = new Empresa(null, idCli, nomeEmp, null, null, null, null, null, null, null, null, null, null, null);
             DAO dao = new DAO();
         
             try {
             
                 EditarCadastro editarCadastro = new EditarCadastro();
                 editarCadastro.setVisible(true);
-                dao.apontaUsuario(usuario, empresa, id);
+                dao.apontaUsuario(usuario, empresa, idCli, nomeEmp);
                 editarCadastro.txtNome.setText(usuario.getNome());
                 editarCadastro.txtData.setText(usuario.getNewData());
                 editarCadastro.txtEmail.setText(usuario.getEmail());
@@ -524,13 +524,14 @@ public class HistoricoCadastro extends javax.swing.JFrame {
                 editarCadastro.txtEnderecoEmp.setText(empresa.getEnderecoEmp());
                 editarCadastro.txtEstado.setText(usuario.getEstado());
                 editarCadastro.txtEstado.setText(usuario.getEstado());
-                editarCadastro.txtEstadoEmp.setText(empresa.getEstadoEmp());
+                editarCadastro.txtIdEmp.setText(empresa.getEstadoEmp());
                 editarCadastro.txtCompleEmp.setText(empresa.getCompleEmp());
                 editarCadastro.txtEmailEmp.setText(empresa.getEmailEmp());
                 editarCadastro.txtArqEmp.setText(empresa.getArq());
                 editarCadastro.txtArqEmp.setText(empresa.getArq());
-                editarCadastro.txtId.setText(String.valueOf(usuario.getId()));
-                editarCadastro.txtAprovado.setSelectedIndex(usuario.getAprovado());
+                editarCadastro.txtId.setText(usuario.getId());
+                editarCadastro.txtIdEmp.setText(empresa.getIdEmp());
+                editarCadastro.txtAprovado.setSelectedIndex(Integer.parseInt(usuario.getAprovado()));
                 dispose();
                     
             } catch (Exception e){

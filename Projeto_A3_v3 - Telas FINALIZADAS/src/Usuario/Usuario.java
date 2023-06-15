@@ -47,6 +47,11 @@ public class Usuario {
         this.cep = cep;
         this.tipoUsuario = tipoUsuario;
         this.aprovado = aprovado;
+        this.telCome = telCome;
+        this.celCome = celCome;
+        this.telResi = telResi;
+        this.celResi = celResi;
+        this.comple = comple;
     }
 
     public Usuario(String login, String senha) {

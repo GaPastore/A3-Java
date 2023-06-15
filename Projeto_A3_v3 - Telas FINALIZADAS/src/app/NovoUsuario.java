@@ -449,7 +449,7 @@ public class NovoUsuario extends javax.swing.JFrame {
     private void btEnviarNovoUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarNovoUsuActionPerformed
         // TODO add your handling code here:
         String nome, email, senha, endereco, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple;
-        int tipoUsuario;
+        String tipoUsuario;
         
         nome = txtNome.getText();
         email = txtEmail.getText();
@@ -464,7 +464,7 @@ public class NovoUsuario extends javax.swing.JFrame {
         celResi = txtCelRes.getText();
         celCome = txtCelCom.getText();
         comple = txtComple.getText();
-        tipoUsuario = 1;
+        tipoUsuario = "1";
         
         if(nome.matches("") || email.matches("") || senha.matches("") || endereco.matches("") || bairro.matches("") || cidade.matches("")
                 || estado.matches("") || cep.matches("") || telResi.matches("") || telCome.matches("") || celResi.matches("") || celCome.matches("")
@@ -476,7 +476,7 @@ public class NovoUsuario extends javax.swing.JFrame {
             
             try{
             
-                Usuario usuario = new Usuario(0, null, nome, email, senha, endereco, null, null, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, 0);
+                Usuario usuario = new Usuario("0", null, nome, email, senha, endereco, null, null, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, "0");
                 DAO dao = new DAO();
 
                 dao.cadastrarUsuario(usuario);

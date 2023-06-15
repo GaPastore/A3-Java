@@ -10,7 +10,8 @@ package Usuario;
  */
 public class Empresa {
     
-    private String id;
+    private String idEmp;
+    private String idCli;
     private String nomeEmp;
     private String emailEmp;
     private String cnpjEmp;
@@ -24,9 +25,10 @@ public class Empresa {
     private String compleEmp;
     private String arqEmp;
 
-    public Empresa(String id, String nomeEmp, String emailEmp, String cnpjEmp, String enderecoEmp, String bairroEmp, String cidadeEmp, String estadoEmp, String cepEmp, 
+    public Empresa(String idEmp, String idCli, String nomeEmp, String emailEmp, String cnpjEmp, String enderecoEmp, String bairroEmp, String cidadeEmp, String estadoEmp, String cepEmp, 
             String telEmp, String celEmp, String compleEmp, String arqEmp) { //Construtor do usuario:
-        this.id = id;
+        this.idEmp = idEmp;
+        this.idCli = idCli;
         this.nomeEmp = nomeEmp;
         this.cnpjEmp = cnpjEmp;
         this.emailEmp = emailEmp;
@@ -45,12 +47,20 @@ public class Empresa {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public String getId(){
-        return id;
+    public String getIdEmp(){
+        return idEmp;
     }
     
-    public void setId(String id){
-        this.id = id;
+    public void setIdEmp(String idEmp){
+        this.idEmp = idEmp;
+    }
+    
+    public String getIdCli(){
+        return idCli;
+    }
+    
+    public void setIdCli(String idCli){
+        this.idCli = idCli;
     }
     
     public String getNomeEmp() { //get do nome

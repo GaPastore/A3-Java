@@ -39,19 +39,62 @@ public class DAO {
         
     }
     
-    public void apontaUsuario(Usuario objUsuario, Empresa objEmpresa, String id) throws Exception{
+    public boolean existeCliente(Usuario objUsuario) throws Exception{
         
-        String sql = "select * from tb_usuario where tipo_usuario = 2 and id = ?";
+        String sql = "select * from tb_usuario where tipo_usuario = 2 and nome = ? and cep = ? and cpf = ? and cnpj = ?";
         
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){ //Ida
             
-            ps.setString(1, String.valueOf(objUsuario.getId()));
+            ps.setString(1, objUsuario.getNome());
+            ps.setString(2, objUsuario.getCep());
+            ps.setString(3, objUsuario.getCpf());
+            ps.setString(4, objUsuario.getCnpj());
+            
+            try (ResultSet rs = ps.executeQuery()){
+                
+                return rs.next();
+                
+            }
+            
+        }
+        
+    }
+    
+    public boolean existeEmpresa(Empresa objEmpresa) throws Exception{
+        
+        String sql = "select * from tb_empresa where nome_emp = ? and tel_emp = ? and cel_emp = ? and cnpj_emp = ?";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){ //Ida
+            
+            ps.setString(1, objEmpresa.getNomeEmp());
+            ps.setString(2, objEmpresa.getTelEmp());
+            ps.setString(3, objEmpresa.getCelEmp());
+            ps.setString(4, objEmpresa.getCnpjEmp());
+            
+            try (ResultSet rs = ps.executeQuery()){
+                
+                return rs.next();
+                
+            }
+            
+        }
+        
+    }
+    
+    public void apontaUsuario(Usuario objUsuario, Empresa objEmpresa, String id, String nomeEmp) throws Exception{
+        
+        String sql = "select * from tb_empresa as t inner join tb_usuario as t2 on t2.id = t.id_usuario where t2.tipo_usuario = 2 and t2.id = ? and t.nome_emp = ?";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){ //Ida
+            
+            ps.setString(1, id);
+            ps.setString(2, nomeEmp);
             
             try {
                 
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                    objUsuario.setId(rs.getString("id"));
+                    objUsuario.setId(rs.getString("t2.id"));
                     objUsuario.setNewData(rs.getString("new_data"));
                     objUsuario.setNome(rs.getString("nome"));
                     objEmpresa.setNomeEmp(rs.getString("nome_emp"));
@@ -80,6 +123,7 @@ public class DAO {
                     objUsuario.setEstado(rs.getString("estado"));
                     objEmpresa.setArq(rs.getString("arq_emp"));
                     objUsuario.setAprovado(rs.getString("aprovado"));
+                    objEmpresa.setIdEmp(rs.getString("t.id"));
                 }
                 
                 
@@ -119,8 +163,8 @@ public class DAO {
             ps.setString(15, objUsuario.getCelCome());
             ps.setString(16, objUsuario.getComple());
             ps.setString(17, objUsuario.getTipoUsuario());
-            ps.setString(30, objUsuario.getAprovado());
-            ps.setString(31, objUsuario.getId());
+            ps.setString(18, objUsuario.getAprovado());
+            ps.setString(19, objUsuario.getId());
             
             try {
                 
@@ -162,9 +206,9 @@ public class DAO {
     
     public void alterarEmpresa(Empresa objEmpresa, Usuario objUsuario) throws Exception{
 
-        String sql = "update tb_usuario set bairro_emp = ?, cidade_emp = ?, endereco_emp = ?, email_emp = ?, estado_emp = ?, "
-                + "cep_emp = ?, cnpj_emp = ?, tel_emp = ?, cel_emp = ?, nome_emp = ?, comple_emp = ?, arq_emp = ?"
-                + " where id_usuario = ?";
+        String sql = "update tb_empresa set bairro_emp = ?, cidade_emp = ?, endereco_emp = ?, email_emp = ?, estado_emp = ?, "
+                + "cep_emp = ?, cnpj_emp = ?, tel_emp = ?, cel_emp = ?, nome_emp = ?, comp_emp = ?, arq_emp = ?"
+                + " where id_usuario = ? and id = ?";
          
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -179,7 +223,9 @@ public class DAO {
             ps.setString(9, objEmpresa.getCelEmp());
             ps.setString(10, objEmpresa.getNomeEmp());
             ps.setString(11, objEmpresa.getCompleEmp());
-            ps.setString(12, objUsuario.getId());
+            ps.setString(12, objEmpresa.getArq());
+            ps.setString(13, objUsuario.getId());
+            ps.setString(14, objEmpresa.getIdEmp());
             
             
             try {
@@ -259,8 +305,8 @@ public class DAO {
             ps.setString(10, objUsuario.getEstado());
             ps.setString(11, objUsuario.getCep());
             ps.setString(12, objUsuario.getTelResi());
-            ps.setString(13, objUsuario.getTelCome());
-            ps.setString(14, objUsuario.getCelResi());
+            ps.setString(13, objUsuario.getCelResi());
+            ps.setString(14, objUsuario.getTelCome());
             ps.setString(15, objUsuario.getCelCome());
             ps.setString(16, objUsuario.getComple());
             ps.setString(17, objUsuario.getTipoUsuario());
@@ -281,10 +327,10 @@ public class DAO {
         
     }
     
-    public void cadastrarEmpresa(Empresa objEmpresa) throws Exception{
+    public void cadastrarEmpresa(Empresa objEmpresa, Usuario objUsuario) throws Exception{
 
-        String sql = "insert into tb_empresa (bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp) " 
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into tb_empresa (bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp, id_usuario) " 
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, (select id from tb_usuario where nome = ? and tipo_usuario = 2))";
          
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -300,30 +346,7 @@ public class DAO {
             ps.setString(10, objEmpresa.getNomeEmp());
             ps.setString(11, objEmpresa.getCompleEmp());
             ps.setString(12, objEmpresa.getArq());
-            
-            
-            try {
-                
-                int rs = ps.executeUpdate();
-                
-            } catch (Exception e){
-                
-                e.printStackTrace();
-            
-            }
-            
-        } 
-        
-    }
-    
-    public void cadastrarIdEmpresa(Usuario objUsuario) throws Exception{
-
-        String sql = "insert into tb_empresa (id_usuario) " 
-                + "select id from tb_usuario where nome = ?";
-         
-        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
-            
-            ps.setString(1, objUsuario.getNome());
+            ps.setString(13,objUsuario.getNome());
             
             
             try {
@@ -360,17 +383,17 @@ public class DAO {
             
             while(rs.next()){
                dtm.setRowCount(i+1);
-               table.setValueAt(rs.getString("id"), i, 0);
-               table.setValueAt(rs.getString("nome"), i, 1);
-               table.setValueAt(rs.getString("nome_emp"), i, 2);
-               table.setValueAt(rs.getString("email"), i, 3);
-               table.setValueAt(rs.getString("cep"), i, 4);
-               table.setValueAt(rs.getString("cnpj_emp"), i, 5);
-               if(rs.getString("aprovado") == "1"){
+               table.setValueAt(rs.getString("t2.id"), i, 0);
+               table.setValueAt(rs.getString("t2.nome"), i, 1);
+               table.setValueAt(rs.getString("t.nome_emp"), i, 2);
+               table.setValueAt(rs.getString("t2.email"), i, 3);
+               table.setValueAt(rs.getString("t2.cep"), i, 4);
+               table.setValueAt(rs.getString("t.cnpj_emp"), i, 5);
+               if(rs.getString("t2.aprovado").matches("1")){
                    table.setValueAt("Em Análise", i, 6);
-               } else if(rs.getString("aprovado") == "2"){
+               } else if(rs.getString("t2.aprovado").matches("2")){
                    table.setValueAt("Negado", i, 6);
-               } else if(rs.getString("aprovado") == "3"){
+               } else if(rs.getString("t2.aprovado").matches("3")){
                    table.setValueAt("Aprovado", i, 6);
                }
                i++;

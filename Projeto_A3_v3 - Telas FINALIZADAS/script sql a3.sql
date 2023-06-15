@@ -22,10 +22,11 @@ create table tb_usuario (
     tel_come varchar(10), #sem formatação
     cel_come varchar(11), #sem formatação
     comple varchar(15),
-    tipo_usuario int(1),
-    aprovado int(1)
+    tipo_usuario int,
+    aprovado int
     );
- create table tb_empresa (   
+ create table tb_empresa (
+	id int primary key auto_increment,
 	bairro_emp varchar(30),
     cidade_emp varchar(20),
     endereco_emp varchar(45),
@@ -48,12 +49,12 @@ create table tb_usuario (
 
 insert into tb_usuario (nome, email, senha) values ('dd', 'dd', 'dd');
 
-insert into tb_empresa (id_usuario) select id from tb_usuario where nome = 'a';
+insert into tb_empresa (id_usuario, nome_emp) values ((select id from tb_usuario where nome = 'a'), 'teste');
 
-update tb_empresa set id_usuario = 2 where tb.usuario.id = 2 and id_usuario = null;
+update tb_empresa set id_usuario = 2 where tb_usuario.id = 2 and id_usuario = null;
 
 delete from tb_empresa where id_usuario = '1';
 
 select * from tb_usuario;
 select * from tb_empresa;
-select * from tb_empresa as t inner join tb_usuario as t2 on t2.id = t.id_usuario where t2.id = 1;
+select * from tb_empresa as t inner join tb_usuario as t2 on t2.tipo_usuario = 2;

@@ -275,8 +275,8 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
                 DAO dao = new DAO();
 
                 dao.alterarSenha(usuario);
-                MenuPrincipal menu = new MenuPrincipal();
-                menu.setVisible(true);
+                Login login = new Login();
+                login.setVisible(true);
                 dispose();
             
             }
