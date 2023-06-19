@@ -105,11 +105,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtNome.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtNome.setForeground(new java.awt.Color(153, 153, 153));
-        txtNome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNomeMouseClicked(evt);
-            }
-        });
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
@@ -145,11 +140,6 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(153, 153, 153));
-        txtEmail.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtEmailMouseClicked(evt);
-            }
-        });
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -543,16 +533,6 @@ public class NovoUsuario extends javax.swing.JFrame {
     private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEstadoActionPerformed
-
-    private void txtNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNomeMouseClicked
-        // TODO add your handling code here:
-        txtNome.setText("");
-    }//GEN-LAST:event_txtNomeMouseClicked
-
-    private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
-        // TODO add your handling code here:
-        txtEmail.setText("");
-    }//GEN-LAST:event_txtEmailMouseClicked
 
     /**
      * @param args the command line arguments

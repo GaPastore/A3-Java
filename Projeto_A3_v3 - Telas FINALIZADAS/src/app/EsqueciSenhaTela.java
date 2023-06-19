@@ -63,6 +63,11 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
         txtNome.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         txtNome.setForeground(new java.awt.Color(153, 153, 153));
         txtNome.setText("Usuário");
+        txtNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNomeMouseClicked(evt);
+            }
+        });
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
@@ -75,6 +80,11 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
         txtConfSenha.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         txtConfSenha.setForeground(new java.awt.Color(153, 153, 153));
         txtConfSenha.setText("Nova senha novamente");
+        txtConfSenha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtConfSenhaMouseClicked(evt);
+            }
+        });
         txtConfSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtConfSenhaActionPerformed(evt);
@@ -102,6 +112,11 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
         txtSenha.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         txtSenha.setForeground(new java.awt.Color(153, 153, 153));
         txtSenha.setText("Nova senha");
+        txtSenha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSenhaMouseClicked(evt);
+            }
+        });
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -116,7 +131,12 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(153, 153, 153));
-        txtEmail.setText("Novo e-mail");
+        txtEmail.setText("E-mail");
+        txtEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEmailMouseClicked(evt);
+            }
+        });
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -302,6 +322,34 @@ public class EsqueciSenhaTela extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtConfSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfSenhaMouseClicked
+        // TODO add your handling code here:
+        if(txtConfSenha.getText().matches("Nova senha novamente")){
+            txtConfSenha.setText("");
+        }
+    }//GEN-LAST:event_txtConfSenhaMouseClicked
+
+    private void txtSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSenhaMouseClicked
+        // TODO add your handling code here:
+        if(txtSenha.getText().matches("Nova senha")){
+            txtSenha.setText("");
+        }
+    }//GEN-LAST:event_txtSenhaMouseClicked
+
+    private void txtNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNomeMouseClicked
+        // TODO add your handling code here:
+        if(txtNome.getText().matches("Usuário")){
+            txtNome.setText("");
+        }
+    }//GEN-LAST:event_txtNomeMouseClicked
+
+    private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
+        // TODO add your handling code here:
+        if(txtEmail.getText().matches("E-mail")){
+            txtEmail.setText("");
+        }
+    }//GEN-LAST:event_txtEmailMouseClicked
 
     /**
      * @param args the command line arguments

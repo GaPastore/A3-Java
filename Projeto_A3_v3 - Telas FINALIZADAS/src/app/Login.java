@@ -244,12 +244,16 @@ public class Login extends javax.swing.JFrame {
 
     private void txtLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLoginMouseClicked
         // TODO add your handling code here:
-        txtLogin.setText("");
+        if(txtLogin.getText().matches("Digite o email de usuário:")){
+            txtLogin.setText("");
+        }
     }//GEN-LAST:event_txtLoginMouseClicked
 
     private void txtSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSenhaMouseClicked
         // TODO add your handling code here:
-        txtSenha.setText("");
+        if(txtSenha.getText().matches("Digite a sua senha:")){
+            txtSenha.setText("");
+        }
     }//GEN-LAST:event_txtSenhaMouseClicked
 
     private void txtCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCadastrarMouseClicked
