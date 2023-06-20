@@ -863,8 +863,8 @@ public class EditarCadastro extends javax.swing.JFrame {
             
             try{
                 
-                Usuario usuario = new Usuario(idCli, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, aprovado);
-                Empresa empresa = new Empresa(idEmp, idCli, nomeEmp, emailEmp, cnpjEmp, enderecoEmp, bairroEmp, cidadeEmp, estadoEmp, cepEmp, telComEmp, celComEmp, compleEmp, arqEmp);
+                Usuario usuario = new Usuario(idCli, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario);
+                Empresa empresa = new Empresa(idEmp, idCli, nomeEmp, emailEmp, cnpjEmp, enderecoEmp, bairroEmp, cidadeEmp, estadoEmp, cepEmp, telComEmp, celComEmp, compleEmp, arqEmp, aprovado);
                 DAO dao = new DAO();
                 
                 dao.alterarUsuario(usuario);
@@ -893,7 +893,7 @@ public class EditarCadastro extends javax.swing.JFrame {
         try{
                 
                 Usuario usuario = new Usuario(id, null, null, null, null, null, null, null, null, null, null, null, 
-                        null, null, null, null, null, null, null);
+                        null, null, null, null, null, null);
                 DAO dao = new DAO();
                 
                 int selection = JOptionPane.showConfirmDialog(null, "Confirmar exclusão?", "Exclusão", JOptionPane.YES_NO_OPTION);

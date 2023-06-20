@@ -810,8 +810,8 @@ public class NovoCadastro extends javax.swing.JFrame {
             
             try{
             
-                Usuario usuario = new Usuario(null, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario, "1");
-                Empresa empresa = new Empresa(null, null, nomeEmp, emailEmp, cnpjEmp, enderecoEmp, bairroEmp, cidadeEmp, estadoEmp, cepEmp, telComEmp, celComEmp, compleEmp, arqEmp);
+                Usuario usuario = new Usuario(null, data, nome, email, null, endereco, cpf, cnpj, bairro, cidade, estado, cep, telResi, telCome, celResi, celCome, comple, tipoUsuario);
+                Empresa empresa = new Empresa(null, null, nomeEmp, emailEmp, cnpjEmp, enderecoEmp, bairroEmp, cidadeEmp, estadoEmp, cepEmp, telComEmp, celComEmp, compleEmp, arqEmp, "1");
                 DAO dao = new DAO();
                 
                 

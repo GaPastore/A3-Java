@@ -24,9 +24,10 @@ public class Empresa {
     private String celEmp;
     private String compleEmp;
     private String arqEmp;
+    private String aprovado;
 
     public Empresa(String idEmp, String idCli, String nomeEmp, String emailEmp, String cnpjEmp, String enderecoEmp, String bairroEmp, String cidadeEmp, String estadoEmp, String cepEmp, 
-            String telEmp, String celEmp, String compleEmp, String arqEmp) { //Construtor do usuario:
+            String telEmp, String celEmp, String compleEmp, String arqEmp, String aprovado) { //Construtor do usuario:
         this.idEmp = idEmp;
         this.idCli = idCli;
         this.nomeEmp = nomeEmp;
@@ -41,6 +42,7 @@ public class Empresa {
         this.celEmp = celEmp;
         this.compleEmp = compleEmp;
         this.arqEmp = arqEmp;
+        this.aprovado = aprovado;
     }
 
     public Empresa(String login, String senha) {
@@ -111,6 +113,10 @@ public class Empresa {
         return compleEmp;
     }
     
+    public String getAprovado() { //get da senha
+        return aprovado;
+    }
+    
     public void setNomeEmp(String nome) { //set do nome
         this.nomeEmp = nome;
     }
@@ -157,6 +163,10 @@ public class Empresa {
     
     public void setCompleEmp(String comple) { //set do nome
         this.compleEmp = comple;
+    }
+    
+    public void setAprovado(String aprovado) {//set da senha
+        this.aprovado = aprovado;
     }
     
 }

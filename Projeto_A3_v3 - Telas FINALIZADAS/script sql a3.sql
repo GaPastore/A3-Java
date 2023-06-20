@@ -22,8 +22,7 @@ create table tb_usuario (
     tel_come varchar(10), #sem formatação
     cel_come varchar(11), #sem formatação
     comple varchar(15),
-    tipo_usuario int,
-    aprovado int
+    tipo_usuario int
     );
  create table tb_empresa (
 	id int primary key auto_increment,
@@ -39,6 +38,7 @@ create table tb_usuario (
     nome_emp varchar(50),
     comp_emp varchar(15),
     arq_emp varchar(50),
+    aprovado int,
     id_usuario int,
     CONSTRAINT fk_usuario_empresa FOREIGN KEY (id_usuario) REFERENCES tb_usuario (id)
     );

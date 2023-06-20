@@ -122,7 +122,7 @@ public class DAO {
                     objEmpresa.setEstadoEmp(rs.getString("estado_emp"));
                     objUsuario.setEstado(rs.getString("estado"));
                     objEmpresa.setArq(rs.getString("arq_emp"));
-                    objUsuario.setAprovado(rs.getString("aprovado"));
+                    objEmpresa.setAprovado(rs.getString("aprovado"));
                     objEmpresa.setIdEmp(rs.getString("t.id"));
                 }
                 
@@ -142,7 +142,7 @@ public class DAO {
         
         String sql = "update tb_usuario set new_data = ?, nome = ?, email = ?, senha = ?, endereco = ?, cpf = ?, "
                 + "cnpj = ?, bairro = ?, cidade = ?, estado = ?, cep = ?, tel_resi = ?, cel_resi = ?, "
-                + "tel_come = ?, cel_come = ?, comple = ?, tipo_usuario = ?, aprovado = ? where id = ?";
+                + "tel_come = ?, cel_come = ?, comple = ?, tipo_usuario = ? where id = ?";
         
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -163,8 +163,7 @@ public class DAO {
             ps.setString(15, objUsuario.getCelCome());
             ps.setString(16, objUsuario.getComple());
             ps.setString(17, objUsuario.getTipoUsuario());
-            ps.setString(18, objUsuario.getAprovado());
-            ps.setString(19, objUsuario.getId());
+            ps.setString(18, objUsuario.getId());
             
             try {
                 
@@ -207,7 +206,7 @@ public class DAO {
     public void alterarEmpresa(Empresa objEmpresa, Usuario objUsuario) throws Exception{
 
         String sql = "update tb_empresa set bairro_emp = ?, cidade_emp = ?, endereco_emp = ?, email_emp = ?, estado_emp = ?, "
-                + "cep_emp = ?, cnpj_emp = ?, tel_emp = ?, cel_emp = ?, nome_emp = ?, comp_emp = ?, arq_emp = ?"
+                + "cep_emp = ?, cnpj_emp = ?, tel_emp = ?, cel_emp = ?, nome_emp = ?, comp_emp = ?, arq_emp = ?, aprovado = ?"
                 + " where id_usuario = ? and id = ?";
          
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
@@ -224,8 +223,9 @@ public class DAO {
             ps.setString(10, objEmpresa.getNomeEmp());
             ps.setString(11, objEmpresa.getCompleEmp());
             ps.setString(12, objEmpresa.getArq());
-            ps.setString(13, objUsuario.getId());
-            ps.setString(14, objEmpresa.getIdEmp());
+            ps.setString(13, objEmpresa.getAprovado());
+            ps.setString(14, objUsuario.getId());
+            ps.setString(15, objEmpresa.getIdEmp());
             
             
             try {
@@ -288,8 +288,8 @@ public class DAO {
     
     public void cadastrarUsuario(Usuario objUsuario) throws Exception{
 
-        String sql = "insert into tb_usuario (new_data, nome, email, senha, endereco, cpf, cnpj, bairro, cidade, estado, cep, tel_resi, cel_resi, tel_come, cel_come, comple, tipo_usuario, aprovado) " 
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into tb_usuario (new_data, nome, email, senha, endereco, cpf, cnpj, bairro, cidade, estado, cep, tel_resi, cel_resi, tel_come, cel_come, comple, tipo_usuario) " 
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -310,7 +310,6 @@ public class DAO {
             ps.setString(15, objUsuario.getCelCome());
             ps.setString(16, objUsuario.getComple());
             ps.setString(17, objUsuario.getTipoUsuario());
-            ps.setString(18, objUsuario.getAprovado());
             
             
             try {
@@ -329,8 +328,8 @@ public class DAO {
     
     public void cadastrarEmpresa(Empresa objEmpresa, Usuario objUsuario) throws Exception{
 
-        String sql = "insert into tb_empresa (bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp, id_usuario) " 
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, (select id from tb_usuario where nome = ? and tipo_usuario = 2))";
+        String sql = "insert into tb_empresa (bairro_emp, cidade_emp, endereco_emp, email_emp, estado_emp, cep_emp, cnpj_emp, tel_emp, cel_emp, nome_emp, comp_emp, arq_emp, id_usuario, aprovado) " 
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, (select id from tb_usuario where nome = ? and tipo_usuario = 2), ?)";
          
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             
@@ -347,6 +346,7 @@ public class DAO {
             ps.setString(11, objEmpresa.getCompleEmp());
             ps.setString(12, objEmpresa.getArq());
             ps.setString(13,objUsuario.getNome());
+            ps.setString(14, objEmpresa.getAprovado());
             
             
             try {
@@ -389,11 +389,11 @@ public class DAO {
                table.setValueAt(rs.getString("t2.email"), i, 3);
                table.setValueAt(rs.getString("t2.cep"), i, 4);
                table.setValueAt(rs.getString("t.cnpj_emp"), i, 5);
-               if(rs.getString("t2.aprovado").matches("1")){
+               if(rs.getString("t.aprovado").matches("1")){
                    table.setValueAt("Em Análise", i, 6);
-               } else if(rs.getString("t2.aprovado").matches("2")){
+               } else if(rs.getString("t.aprovado").matches("2")){
                    table.setValueAt("Negado", i, 6);
-               } else if(rs.getString("t2.aprovado").matches("3")){
+               } else if(rs.getString("t.aprovado").matches("3")){
                    table.setValueAt("Aprovado", i, 6);
                }
                i++;

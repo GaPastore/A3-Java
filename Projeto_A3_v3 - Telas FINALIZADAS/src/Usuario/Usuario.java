@@ -28,11 +28,10 @@ public class Usuario {
     private String celCome;
     private String comple;
     private String tipoUsuario;
-    private String aprovado;
 
     public Usuario(String id, String newData, String nome, String email, String senha, String endereco, String cpf, String cnpj, String bairro, String cidade, 
             String estado, String cep, String telResi, String telCome, String celResi, String celCome, 
-            String comple, String tipoUsuario, String aprovado) { //Construtor do usuario:
+            String comple, String tipoUsuario) { //Construtor do usuario:
         this.id = id;
         this.newData = newData;
         this.nome = nome;
@@ -46,7 +45,6 @@ public class Usuario {
         this.estado = estado;
         this.cep = cep;
         this.tipoUsuario = tipoUsuario;
-        this.aprovado = aprovado;
         this.telCome = telCome;
         this.celCome = celCome;
         this.telResi = telResi;
@@ -130,10 +128,6 @@ public class Usuario {
         return tipoUsuario;
     }
     
-    public String getAprovado() { //get da senha
-        return aprovado;
-    }
-    
     public void setId(String id){
         this.id = id;
     }
@@ -204,10 +198,6 @@ public class Usuario {
 
     public void setTipoUsuario(String tipoUsuario) {//set da senha
         this.tipoUsuario = tipoUsuario;
-    }
-    
-    public void setAprovado(String aprovado) {//set da senha
-        this.aprovado = aprovado;
     }
     
 }
